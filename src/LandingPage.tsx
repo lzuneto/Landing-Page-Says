@@ -301,32 +301,181 @@ const LandingPage = () => {
             <div className="relative">
               <div className="absolute -left-10 top-6 h-40 w-40 rounded-full bg-sky-200 blur-3xl" />
               <div className="absolute right-0 -bottom-10 h-40 w-40 rounded-full bg-slate-200 blur-3xl" />
-              <div className="relative rounded-3xl border border-slate-200 bg-white p-4 shadow-2xl shadow-sky-100">
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-sky-500 to-blue-500" />
-                    <div className="h-2 w-16 rounded-full bg-slate-200" />
+              <div className="relative rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 p-6 shadow-2xl shadow-sky-100 lg:p-8">
+                {/* Dashboard Container - Layout Limpo e Focado */}
+                <div className="space-y-6 text-white">
+                  {/* Header Simplificado */}
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-semibold text-white lg:text-xl">
+                      Seu plano da semana
+                    </h3>
+                    <p className="text-xs text-slate-400">Semana 17-23 Nov</p>
                   </div>
-                  <div className="mt-8 space-y-6">
-                    {[1, 2, 3, 4].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4"
-                      >
-                        <div className="h-10 w-10 rounded-2xl bg-sky-100" />
-                        <div className="flex-1 space-y-2">
-                          <div className="h-2 rounded-full bg-slate-200" />
-                          <div className="h-2 w-1/2 rounded-full bg-slate-200/70" />
+
+                  {/* TOPO: Progresso e Nível - Foco Principal */}
+                  <div className="space-y-4">
+                    {/* Card de Progresso Principal */}
+                    <div className="rounded-2xl bg-gradient-to-br from-sky-500/10 to-blue-500/10 p-5 backdrop-blur-sm">
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <p className="text-xs font-medium text-slate-300">Seu nível</p>
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-2xl font-bold text-white">1</span>
+                            <span className="text-sm text-slate-400">de 5</span>
+                          </div>
                         </div>
-                        <div className="text-xs text-slate-500">+12%</div>
+                        <div className="relative">
+                          <svg className="h-20 w-20 -rotate-90 transform lg:h-24 lg:w-24">
+                            <circle
+                              cx="40"
+                              cy="40"
+                              r="36"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="6"
+                              className="text-slate-700/50"
+                            />
+                            <circle
+                              cx="40"
+                              cy="40"
+                              r="36"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="6"
+                              strokeDasharray={`${2 * Math.PI * 36}`}
+                              strokeDashoffset={`${2 * Math.PI * 36 * 0.7}`}
+                              className="text-sky-400"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-lg font-bold text-sky-400">30%</span>
+                          </div>
+                        </div>
                       </div>
-                    ))}
+                      <div className="mt-4 flex items-center gap-4 text-sm">
+                        <div>
+                          <p className="text-xs text-slate-400">Progresso semanal</p>
+                          <p className="font-semibold text-white">2 de 3 treinos</p>
+                        </div>
+                        <div className="h-8 w-px bg-slate-700" />
+                        <div>
+                          <p className="text-xs text-slate-400">Km esta semana</p>
+                          <p className="font-semibold text-white">8 de 12 km</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card de Hoje - Destaque */}
+                    <div className="rounded-2xl bg-gradient-to-r from-orange-500/20 to-amber-500/20 p-4 backdrop-blur-sm">
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <p className="mb-1 text-xs font-medium text-orange-300">Treino de hoje</p>
+                          <p className="text-base font-semibold text-white">Corrida contínua</p>
+                          <p className="mt-1 text-xs text-slate-300">4 km • Intensidade leve</p>
+                        </div>
+                        <div className="ml-4 rounded-full bg-orange-500 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-orange-500/30">
+                          Começar
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="mt-6 rounded-2xl bg-sky-50/80 p-4">
-                  <p className="text-sm text-slate-600">
-                    A ideia aqui é ter o Visual do painel com cards, gráficos e alertas inspirado no layout do app atual. 
-                  </p>
+
+                  {/* MEIO: Desafios Simplificados */}
+                  <div className="space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Desafios da semana
+                    </p>
+                    <div className="space-y-2">
+                      {[
+                        { title: '10K da semana', progress: 8, total: 10, unit: 'km' },
+                        { title: '3 treinos', progress: 2, total: 3, unit: 'treinos' },
+                      ].map((challenge, idx) => {
+                        const percentage = (challenge.progress / challenge.total) * 100;
+                        return (
+                          <div
+                            key={idx}
+                            className="rounded-xl bg-slate-800/50 p-3 backdrop-blur-sm"
+                          >
+                            <div className="mb-2 flex items-center justify-between">
+                              <span className="text-sm font-medium text-white">
+                                {challenge.title}
+                              </span>
+                              <span className="text-xs font-semibold text-sky-400">
+                                {challenge.progress}/{challenge.total} {challenge.unit}
+                              </span>
+                            </div>
+                            <div className="h-2 overflow-hidden rounded-full bg-slate-700/50">
+                              <div
+                                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-blue-500 transition-all"
+                                style={{ width: `${percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* BAIXO: Calendário Semanal Simplificado */}
+                  <div className="space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Próximos dias
+                    </p>
+                    <div className="grid grid-cols-7 gap-1.5">
+                      {[
+                        { day: 'S', date: '17', type: 'rest', isToday: false },
+                        { day: 'T', date: '18', type: 'workout', km: '4km', intensity: 'leve', isToday: true },
+                        { day: 'Q', date: '19', type: 'rest', isToday: false },
+                        { day: 'Q', date: '20', type: 'workout', km: '4km', intensity: 'mod', isToday: false },
+                        { day: 'S', date: '21', type: 'rest', isToday: false },
+                        { day: 'S', date: '22', type: 'workout', km: '4km', intensity: 'leve', isToday: false },
+                        { day: 'D', date: '23', type: 'rest', isToday: false },
+                      ].map((item, idx) => (
+                        <div
+                          key={idx}
+                          className={`rounded-lg p-2 text-center transition-all ${
+                            item.isToday
+                              ? 'bg-gradient-to-br from-orange-500/30 to-amber-500/30 ring-2 ring-orange-400/50'
+                              : item.type === 'workout'
+                                ? 'bg-slate-800/30'
+                                : 'bg-slate-800/10'
+                          }`}
+                        >
+                          <p
+                            className={`mb-1 text-[10px] font-semibold ${
+                              item.isToday ? 'text-orange-300' : 'text-slate-400'
+                            }`}
+                          >
+                            {item.day}
+                          </p>
+                          <p
+                            className={`mb-1 text-xs font-semibold ${
+                              item.isToday ? 'text-white' : 'text-slate-300'
+                            }`}
+                          >
+                            {item.date}
+                          </p>
+                          {item.type === 'workout' ? (
+                            <div className="space-y-0.5">
+                              <div
+                                className={`mx-auto h-1.5 w-1.5 rounded-full ${
+                                  item.intensity === 'leve'
+                                    ? 'bg-green-400'
+                                    : item.intensity === 'mod'
+                                      ? 'bg-yellow-400'
+                                      : 'bg-orange-400'
+                                }`}
+                              />
+                              <p className="text-[9px] text-slate-400">{item.km}</p>
+                            </div>
+                          ) : (
+                            <div className="h-1.5" />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
