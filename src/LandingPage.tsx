@@ -325,7 +325,7 @@ const LandingPage = () => {
                 </div>
                 <div className="mt-6 rounded-2xl bg-sky-50/80 p-4">
                   <p className="text-sm text-slate-600">
-                    Visual do painel com cards, gráficos e alertas inspirado no layout original.
+                    A ideia aqui é ter o Visual do painel com cards, gráficos e alertas inspirado no layout do app atual. 
                   </p>
                 </div>
               </div>
