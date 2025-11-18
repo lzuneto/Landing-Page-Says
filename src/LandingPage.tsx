@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 type Stat = {
   label: string;
@@ -42,7 +42,7 @@ const painStatements = [
     text: '“Por que todo mundo evolui e eu continuo no mesmo pace?”',
   },
   { emoji: '🩹', text: '“E se eu estiver me machucando sem perceber?”' },
-  { emoji: '🏁', text: '“Eu queria correr 5 km, mas sempre paro antes…”' },
+  { emoji: '🏁', text: '“Eu queria correr 10 km, mas sempre paro antes…”' },
   { emoji: '⏳', text: '“Quero treinar, mas minha rotina não ajuda.”' },
   { emoji: '🧭', text: '“Eu não sei por onde começar.”' },
 ];
@@ -198,6 +198,8 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const LandingPage = () => {
+  const [veloImageError, setVeloImageError] = useState(false);
+  
   const handleAnchorClick = useCallback((sectionId: string) => {
     scrollToSection(sectionId);
   }, []);
@@ -215,7 +217,7 @@ const LandingPage = () => {
               handleAnchorClick('hero');
             }}
           >
-            PaceON
+            Grit Run
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
             {[
@@ -252,23 +254,51 @@ const LandingPage = () => {
         {/* Hero */}
         <section
           id="hero"
-          className="relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-white"
+          className="relative overflow-visible bg-gradient-to-b from-sky-50 via-white to-white"
         >
+          {/* Mascote Velo no Hero - Desktop: entre as colunas */}
+          <div 
+            className="absolute top-[70%] hidden h-auto w-auto max-h-[260px] pointer-events-none transition-transform duration-300 hover:scale-105 lg:block"
+            style={{ 
+              left: 'calc(50% + 600px)',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 10
+            }}
+          >
+            {!veloImageError ? (
+              <img
+                src="/velo-intro-perfil.png"
+                alt="Mascote Velo - Grit Run"
+                className="h-full w-auto object-contain drop-shadow-lg"
+                style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))' }}
+                onError={() => setVeloImageError(true)}
+              />
+            ) : (
+              <div className="flex h-64 w-40 items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/20 to-blue-600/20 border-2 border-dashed border-blue-300/50">
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🦊</div>
+                  <div className="text-xs font-semibold text-blue-600">Velo</div>
+                </div>
+              </div>
+            )}
+          </div>
+          
           <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:items-center lg:py-28">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-sky-700">
-                Aplicativo para Corredores
+              PARA CORREDORES DA VIDA REAL
               </div>
               <div className="space-y-6">
                 <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
-                  Leve sua corrida ao próximo nível, com treinos que se ajustam
-                  ao seu corpo, seu tempo e sua vida.
+                Correr bem não precisa custar sua vida.
                 </h1>
+                
                 <p className="text-base text-slate-600 md:text-lg">
-                  O único app com o Sistema Inteligente de Treinos Adaptativos™.
+                Melhore seus tempos, corra sem dores e aproveite a vida. <br/>
+                Com uma tecnologia que entende você, os treinos se adaptam a sua rotina.
                 </p>
                 <p className="text-base text-slate-600 md:text-lg">
-                  <em>Corra mais. Corra melhor. Corra do seu jeito.</em>
+                  <em>Sem cartão. Sem pressão.</em>
                 </p>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row">
@@ -480,6 +510,7 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
+          
         </section>
 
         {/* Bloco 03 – Cards empilhados */}
@@ -489,11 +520,13 @@ const LandingPage = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-              Essas dúvidas são mais comuns do que você imagina.
+              Você corre sempre… e continua no mesmo pace.”
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
-              Elas aparecem quando o treino não se adapta ao seu corpo, ao seu tempo e à sua vida.
 
+              </p>
+              <p className="mt-6 text-lg font-medium text-slate-700 md:text-xl">
+                Você já se pegou tendo esses pensamentos?
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -523,18 +556,17 @@ const LandingPage = () => {
         <section className="bg-slate-900 text-white">
           <div className="mx-auto max-w-5xl px-6 py-20 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-sky-300">
-              Experiência PaceON
+              Experiência Grit Run
             </p>
             <div className="mt-6 space-y-4">
               <p className="text-4xl font-semibold leading-tight md:text-5xl">
-                Você não precisa de força de vontade infinita.
-              </p>
+              Você já tentou força de vontade.              </p>
               <p className="text-4xl font-semibold leading-tight text-sky-200 md:text-5xl">
-                Precisa de treinos que entendem você.
+                Agora corra bem e viva leve.
               </p>
             </div>
             <p className="mt-8 text-lg text-slate-200">
-              O resto, a nossa tecnologia faz.
+            Seu treino recalcula. Seu pace melhora. Sua vida continua.
             </p>
             <button
               type="button"
@@ -558,7 +590,7 @@ const LandingPage = () => {
                   Como funciona o Sistema Inteligente de Treinos Adaptativos™
                 </h2>
                 <p className="text-base text-slate-600 md:text-lg">
-                  Em cinco passos o PaceON entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.
+                  Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.
                 </p>
               </div>
             </div>
@@ -567,14 +599,16 @@ const LandingPage = () => {
                 <div className="pointer-events-none absolute left-6 right-6 top-12 hidden h-px bg-sky-200 md:block" />
                 {steps.map((step, index) => {
                   const isLast = index === steps.length - 1;
+                  const isFirst = index === 0;
                   return (
-                    <div key={step.title} className="flex items-stretch gap-6">
+                    <div key={step.title} className="relative flex items-stretch gap-6">
                       <article
                         className={`relative flex aspect-square w-64 min-w-[16rem] max-w-[16rem] flex-col rounded-3xl border bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl sm:w-60 sm:min-w-[15rem] md:w-56 md:min-w-[14rem] ${
                           isLast
                             ? 'border-amber-200/70 bg-gradient-to-br from-white to-amber-50 shadow-lg shadow-amber-100'
                             : 'border-slate-100'
                         }`}
+                        style={{ zIndex: 1 }}
                       >
                         <div
                           className={`mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold shadow-sm ${
@@ -620,10 +654,10 @@ const LandingPage = () => {
                 Benefícios
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-                A forma moderna de treinar corrida — sem complicar sua vida.
+                A forma moderna de treinar corrida — sem abrir mão da sua vida.
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
-                Um sistema que ajusta, planeja e acompanha você em cada passo.
+              Você corre. A vida acontece. O treino recalcula.
               </p>
             </div>
             <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -833,7 +867,7 @@ const LandingPage = () => {
       <footer className="border-t border-slate-200 bg-white/90">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div>
-            <p className="text-lg font-semibold text-slate-900">PaceON</p>
+            <p className="text-lg font-semibold text-slate-900">Grit Run</p>
             <p className="text-sm text-slate-600">
               Plataforma completa para times de assessoria focados em crescimento.
             </p>
@@ -862,7 +896,7 @@ const LandingPage = () => {
             </a>
           </div>
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} PaceON. Todos os direitos reservados.
+            © {new Date().getFullYear()} Grit Run. Todos os direitos reservados.
           </p>
         </div>
       </footer>
