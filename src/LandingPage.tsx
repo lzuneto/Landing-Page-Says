@@ -1,5 +1,14 @@
 import { useCallback, useState } from 'react';
 
+// ============================================
+// CONFIGURAÇÃO DE COPY - ESCOLHA A VARIANTE AQUI
+// ============================================
+const ACTIVE_VARIANT = 'variantA' as const;
+type VariantKey = 'variantA' | 'variantB' | 'variantC';
+
+// ============================================
+// TIPOS
+// ============================================
 type Stat = {
   label: string;
   value: string;
@@ -35,160 +44,808 @@ type Faq = {
   answer: string;
 };
 
-const painStatements = [
-  { emoji: '🌧️', text: '“Será que estou correndo certo?”' },
-  {
-    emoji: '🌀',
-    text: '“Por que todo mundo evolui e eu continuo no mesmo pace?”',
-  },
-  { emoji: '🩹', text: '“E se eu estiver me machucando sem perceber?”' },
-  { emoji: '🏁', text: '“Eu queria correr 10 km, mas sempre paro antes…”' },
-  { emoji: '⏳', text: '“Quero treinar, mas minha rotina não ajuda.”' },
-  { emoji: '🧭', text: '“Eu não sei por onde começar.”' },
-];
+type PainStatement = {
+  emoji: string;
+  text: string;
+};
 
-const stats: Stat[] = [
-  { label: 'Treinos realizados', value: '2.400+' },
-  { label: 'Km registrados', value: '40.000+' },
-  { label: 'Satisfação média', value: '4.9/5' },
-];
+type CopyData = {
+  header: {
+    logo: string;
+    nav: {
+      benefits: string;
+      testimonials: string;
+      howItWorks: string;
+      plans: string;
+      faq: string;
+    };
+    cta: string;
+  };
+  hero: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    subtitleItalic: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    stats: Stat[];
+  };
+  dashboard: {
+    title: string;
+    weekRange: string;
+    levelLabel: string;
+    weeklyProgressLabel: string;
+    kmThisWeekLabel: string;
+    todayWorkoutLabel: string;
+    todayWorkoutType: string;
+    todayWorkoutDetails: string;
+    todayWorkoutCta: string;
+    challengesLabel: string;
+    upcomingDaysLabel: string;
+  };
+  painSection: {
+    title: string;
+    subtitle: string;
+    statements: PainStatement[];
+    conclusion: string;
+    conclusionBold: string;
+  };
+  experienceSection: {
+    badge: string;
+    titleLine1: string;
+    titleLine2: string;
+    subtitle: string;
+    cta: string;
+  };
+  howItWorks: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    steps: Step[];
+    swipeHint: string;
+  };
+  benefits: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    features: Feature[];
+  };
+  socialProof: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    testimonials: Testimonial[];
+  };
+  pricingAnchor: {
+    title: string;
+    subtitle: string;
+    intro: string;
+    benefits: string[];
+  };
+  plans: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    plans: Plan[];
+  };
+  faq: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    faqs: Faq[];
+  };
+  footer: {
+    brand: string;
+    description: string;
+    links: {
+      terms: string;
+      privacy: string;
+      contact: string;
+    };
+    copyright: string;
+  };
+};
 
-const features: Feature[] = [
-  {
-    title: 'Treinos inteligentes e personalizados',
-    description: 'Feitos com base em objetivos, ritmo, tempo e histórico real.',
+// ============================================
+// ESTRUTURA DE COPY COM 3 VARIANTES
+// ============================================
+const copyVariants: Record<VariantKey, CopyData> = {
+  variantA: {
+    header: {
+      logo: 'Grit Run',
+      nav: {
+        benefits: 'Benefícios',
+        testimonials: 'Depoimentos',
+        howItWorks: 'Como funciona',
+        plans: 'Planos',
+        faq: 'FAQ',
+      },
+      cta: 'Começar grátis',
+    },
+    hero: {
+      badge: 'PARA CORREDORES DA VIDA REAL',
+      title: 'Correr bem é evoluir seu pace sem sofrer.',
+      subtitle: 'Melhore seus tempos, corra sem dores e aproveite a vida. Com uma tecnologia que entende você, os treinos se adaptam a sua rotina.',
+      subtitleItalic: 'Sem cartão. Sem pressão.',
+      ctaPrimary: 'Começar teste gratuito',
+      ctaSecondary: 'Ver como funciona',
+      stats: [
+        { label: 'Treinos realizados', value: '2.400+' },
+        { label: 'Km registrados', value: '40.000+' },
+        { label: 'Satisfação média', value: '4.9/5' },
+      ],
+    },
+    dashboard: {
+      title: 'Seu plano da semana',
+      weekRange: 'Semana 17-23 Nov',
+      levelLabel: 'Seu nível',
+      weeklyProgressLabel: 'Progresso semanal',
+      kmThisWeekLabel: 'Km esta semana',
+      todayWorkoutLabel: 'Treino de hoje',
+      todayWorkoutType: 'Corrida contínua',
+      todayWorkoutDetails: '4 km • Intensidade leve',
+      todayWorkoutCta: 'Começar',
+      challengesLabel: 'Desafios da semana',
+      upcomingDaysLabel: 'Próximos dias',
+    },
+    painSection: {
+      title: 'Você corre sempre… e continua no mesmo pace.',
+      subtitle: 'Você já se pegou tendo esses pensamentos?',
+      statements: [
+        { emoji: '🌧️', text: '"Será que estou correndo certo?"' },
+        { emoji: '🌀', text: '"Por que todo mundo evolui e eu continuo no mesmo pace?"' },
+        { emoji: '🩹', text: '"E se eu estiver me machucando sem perceber?"' },
+        { emoji: '🏁', text: '"Eu queria correr 10 km, mas sempre paro antes…"' },
+        { emoji: '⏳', text: '"Quero treinar, mas minha rotina não ajuda."' },
+        { emoji: '🧭', text: '"Eu não sei por onde começar."' },
+      ],
+      conclusion: 'Esses pensamentos não significam que correr não é pra você.',
+      conclusionBold: 'Significa que falta um método para organizar tudo isso.',
+    },
+    experienceSection: {
+      badge: 'Experiência Grit Run',
+      titleLine1: 'Você já tentou força de vontade.',
+      titleLine2: 'Agora corra bem e viva leve.',
+      subtitle: 'Seu treino recalcula. Seu pace melhora. Sua vida continua.',
+      cta: 'Começar teste gratuito',
+    },
+    howItWorks: {
+      badge: 'Como funciona',
+      title: 'Como funciona o Sistema Inteligente de Treinos Adaptativos™',
+      subtitle: 'Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.',
+      steps: [
+        {
+          title: 'Você cria seu perfil de corrida',
+          description: 'Objetivo, disponibilidade, ritmo atual, limitações, histórico.',
+        },
+        {
+          title: 'O sistema monta seu plano automático',
+          description: 'Feito sob medida para sua vida.',
+        },
+        {
+          title: 'Cada treino se adapta ao seu desempenho real',
+          description: 'Correu mais forte? Ajusta. Sentiu cansaço? Reduz carga. Faltou treino? Remonta o cronograma.',
+        },
+        {
+          title: 'Você vê sua evolução diariamente',
+          description: 'Gráficos, progressão, pace, distância, constância.',
+        },
+        {
+          title: 'Resultado',
+          description: 'Um corredor mais confiante, consistente e preparado — em menos tempo e sem frustração.',
+        },
+      ],
+      swipeHint: 'Arraste para o lado para ver todas as etapas →',
+    },
+    benefits: {
+      badge: 'Benefícios',
+      title: 'A forma moderna de treinar corrida — sem abrir mão da sua vida.',
+      subtitle: 'Você corre. A vida acontece. O treino recalcula.',
+      features: [
+        {
+          title: 'Treinos inteligentes e personalizados',
+          description: 'Feitos com base em objetivos, ritmo, tempo e histórico real.',
+        },
+        {
+          title: 'Ajustes automáticos conforme performance',
+          description: 'Ritmo mudou? Corrida cansou? O plano se adapta pra você.',
+        },
+        {
+          title: 'Semana otimizada para sua rotina',
+          description: 'Calendário inteligente que respeita seus dias e horários.',
+        },
+        {
+          title: 'Painel de evolução completo',
+          description: 'Métricas claras: pace, distância, constância e progressão.',
+        },
+        {
+          title: 'Estratégia para 5K, 10K, 21K, 42K',
+          description: 'Planeje desafios com planos validados para cada distância.',
+        },
+        {
+          title: 'Programas validados por especialistas',
+          description: 'Baseados em métodos profissionais, com linguagem simples.',
+        },
+      ],
+    },
+    socialProof: {
+      badge: 'Resultados reais',
+      title: 'Corredores de todos os níveis já confiam na plataforma.',
+      subtitle: 'Depoimentos que mostram como tecnologia + treino inteligente transformam a experiência de quem corre.',
+      testimonials: [
+        {
+          content: 'A tecnologia se tornou minha maior aliada na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
+          author: 'Inácio Nogueira',
+          role: 'Maratonista',
+        },
+        {
+          content: 'A plataforma é essencial para qualquer pessoa correr melhor. Ela orienta, ajusta e guia — desde iniciantes até quem já corre distâncias maiores. Facilita muito a evolução com segurança.',
+          author: 'Rafael Soccol',
+          role: 'Corredor de Meia Maratona – Florianópolis',
+        },
+        {
+          content: 'Comecei a correr há pouco tempo e já vi meu ritmo melhorar rapidamente. A plataforma se adapta ao meu preparo e me dá confiança para continuar. Nunca imaginei evoluir tão rápido.',
+          author: 'Elizeu Neto',
+          role: 'Corredor Iniciante',
+        },
+      ],
+    },
+    pricingAnchor: {
+      title: 'Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.',
+      subtitle: 'Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.',
+      intro: 'Mas você não precisa pagar esse valor para ter:',
+      benefits: [
+        'Personalização',
+        'Ajustes automáticos',
+        'Acompanhamento inteligente',
+        'Metodologia profissional',
+      ],
+    },
+    plans: {
+      badge: 'Planos',
+      title: 'Escolha o plano que acompanha sua evolução na corrida.',
+      subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
+      plans: [
+        {
+          name: 'TESTE GRATUITO',
+          description: 'Ideal para quem quer experimentar antes de se comprometer.',
+          price: 'R$ 0/14 dias',
+          cta: 'Testar por 14 dias',
+          highlight: true,
+          features: [
+            'Acesso aos treinos básicos',
+            'Primeiro plano personalizado liberado',
+            'Recalculo automático da semana conforme performance',
+            'Cancelamento automático sem cobrança',
+          ],
+        },
+        {
+          name: 'MENSAL',
+          description: 'Para quem quer treinar com inteligência.',
+          price: 'R$ 49,90/mês',
+          cta: 'Assinar Mensal',
+          features: [
+            'Todos os recursos do Teste Gratuito',
+            'Treinos adaptativos ilimitados',
+            'Estratégias completas para 5K, 10K e 21K',
+            'Painel avançado de métricas (pace, distância, constância)',
+          ],
+        },
+        {
+          name: 'Anual',
+          description: '(cobrado uma vez por ano)',
+          price: 'R$ 35,00 / mês',
+          cta: 'Assinar Anual',
+          features: [
+            'Todos os recursos do plano Mensal',
+            'Acesso garantido a novos modos de treino',
+            'Prioridade em novas funcionalidades',
+            'Economia de R$ 178 por ano',
+            'Pagamento único, sem surpresas',
+          ],
+        },
+      ],
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Perguntas frequentes',
+      subtitle: 'Tire suas dúvidas antes de começar seus treinos com a plataforma.',
+      faqs: [
+        {
+          question: 'Preciso ter experiência para usar a plataforma?',
+          answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
+        },
+        {
+          question: 'Como os treinos são personalizados?',
+          answer: 'O sistema analisa seu ritmo, disponibilidade, histórico e objetivo. A partir disso, monta e ajusta seu plano automaticamente conforme sua evolução.',
+        },
+        {
+          question: 'E se eu não conseguir seguir o treino do dia?',
+          answer: 'Sem problema. O sistema recalcula sua semana e adapta o plano ao seu ritmo real, evitando frustração e sobrecarga.',
+        },
+        {
+          question: 'Preciso de relógio Garmin ou outro smartwatch?',
+          answer: 'Não. Você pode começar usando apenas o celular.',
+        },
+      ],
+    },
+    footer: {
+      brand: 'Grit Run',
+      description: 'Plataforma completa para times de assessoria focados em crescimento.',
+      links: {
+        terms: 'Termos de uso',
+        privacy: 'Privacidade',
+        contact: 'Contato',
+      },
+      copyright: `© ${new Date().getFullYear()} Grit Run. Todos os direitos reservados.`,
+    },
   },
-  {
-    title: 'Ajustes automáticos conforme performance',
-    description: 'Ritmo mudou? Corrida cansou? O plano se adapta pra você.',
+  
+  variantB: {
+    header: {
+      logo: 'Grit Run',
+      nav: {
+        benefits: 'Benefícios',
+        testimonials: 'Depoimentos',
+        howItWorks: 'Como funciona',
+        plans: 'Planos',
+        faq: 'FAQ',
+      },
+      cta: 'Começar grátis',
+    },
+    hero: {
+      badge: 'PARA CORREDORES DA VIDA REAL',
+      title: 'Correr bem é ver progresso real em cada treino.',
+      subtitle: 'Melhore seus tempos, corra sem dores e aproveite a vida. Planeje desafios com planos validados para cada distância. (5K, 10K, 21K, 42K)',
+      subtitleItalic: 'Sem cartão. Sem pressão.',
+      ctaPrimary: 'Começar teste gratuito',
+      ctaSecondary: 'Ver como funciona',
+      stats: [
+        { label: 'Treinos realizados', value: '2.400+' },
+        { label: 'Km registrados', value: '40.000+' },
+        { label: 'Satisfação média', value: '4.9/5' },
+      ],
+    },
+    dashboard: {
+      title: 'Seu plano da semana',
+      weekRange: 'Semana 17-23 Nov',
+      levelLabel: 'Seu nível',
+      weeklyProgressLabel: 'Progresso semanal',
+      kmThisWeekLabel: 'Km esta semana',
+      todayWorkoutLabel: 'Treino de hoje',
+      todayWorkoutType: 'Corrida contínua',
+      todayWorkoutDetails: '4 km • Intensidade leve',
+      todayWorkoutCta: 'Começar',
+      challengesLabel: 'Desafios da semana',
+      upcomingDaysLabel: 'Próximos dias',
+    },
+    painSection: {
+      title: 'Você corre sempre… e continua no mesmo pace.',
+      subtitle: 'Você já se pegou tendo esses pensamentos?',
+      statements: [
+        { emoji: '🌧️', text: '"Será que estou correndo certo?"' },
+        { emoji: '🌀', text: '"Por que todo mundo evolui e eu continuo no mesmo pace?"' },
+        { emoji: '🩹', text: '"E se eu estiver me machucando sem perceber?"' },
+        { emoji: '🏁', text: '"Eu queria correr 10 km, mas sempre paro antes…"' },
+        { emoji: '⏳', text: '"Quero treinar, mas minha rotina não ajuda."' },
+        { emoji: '🧭', text: '"Eu não sei por onde começar."' },
+      ],
+      conclusion: 'Esses pensamentos não significam que correr não é pra você.',
+      conclusionBold: 'Significa que falta um método para organizar tudo isso.',
+    },
+    experienceSection: {
+      badge: 'Experiência Grit Run',
+      titleLine1: 'Você já tentou força de vontade.',
+      titleLine2: 'Agora corra bem e viva leve.',
+      subtitle: 'Seu treino recalcula. Seu pace melhora. Sua vida continua.',
+      cta: 'Começar teste gratuito',
+    },
+    howItWorks: {
+      badge: 'Como funciona',
+      title: 'Como funciona o Sistema Inteligente de Treinos Adaptativos™',
+      subtitle: 'Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.',
+      steps: [
+        {
+          title: 'Você cria seu perfil de corrida',
+          description: 'Objetivo, disponibilidade, ritmo atual, limitações, histórico.',
+        },
+        {
+          title: 'O sistema monta seu plano automático',
+          description: 'Feito sob medida para sua vida.',
+        },
+        {
+          title: 'Cada treino se adapta ao seu desempenho real',
+          description: 'Correu mais forte? Ajusta. Sentiu cansaço? Reduz carga. Faltou treino? Remonta o cronograma.',
+        },
+        {
+          title: 'Você vê sua evolução diariamente',
+          description: 'Gráficos, progressão, pace, distância, constância.',
+        },
+        {
+          title: 'Resultado',
+          description: 'Um corredor mais confiante, consistente e preparado — em menos tempo e sem frustração.',
+        },
+      ],
+      swipeHint: 'Arraste para o lado para ver todas as etapas →',
+    },
+    benefits: {
+      badge: 'Benefícios',
+      title: 'A forma moderna de treinar corrida — sem abrir mão da sua vida.',
+      subtitle: 'Você corre. A vida acontece. O treino recalcula.',
+      features: [
+        {
+          title: 'Treinos inteligentes e personalizados',
+          description: 'Feitos com base em objetivos, ritmo, tempo e histórico real.',
+        },
+        {
+          title: 'Ajustes automáticos conforme performance',
+          description: 'Ritmo mudou? Corrida cansou? O plano se adapta pra você.',
+        },
+        {
+          title: 'Semana otimizada para sua rotina',
+          description: 'Calendário inteligente que respeita seus dias e horários.',
+        },
+        {
+          title: 'Painel de evolução completo',
+          description: 'Métricas claras: pace, distância, constância e progressão.',
+        },
+        {
+          title: 'Estratégia para 5K, 10K, 21K, 42K',
+          description: 'Planeje desafios com planos validados para cada distância.',
+        },
+        {
+          title: 'Programas validados por especialistas',
+          description: 'Baseados em métodos profissionais, com linguagem simples.',
+        },
+      ],
+    },
+    socialProof: {
+      badge: 'Resultados reais',
+      title: 'Corredores de todos os níveis já confiam na plataforma.',
+      subtitle: 'Depoimentos que mostram como tecnologia + treino inteligente transformam a experiência de quem corre.',
+      testimonials: [
+        {
+          content: 'A tecnologia se tornou minha maior aliada na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
+          author: 'Inácio Nogueira',
+          role: 'Maratonista',
+        },
+        {
+          content: 'A plataforma é essencial para qualquer pessoa correr melhor. Ela orienta, ajusta e guia — desde iniciantes até quem já corre distâncias maiores. Facilita muito a evolução com segurança.',
+          author: 'Rafael Soccol',
+          role: 'Corredor de Meia Maratona – Florianópolis',
+        },
+        {
+          content: 'Comecei a correr há pouco tempo e já vi meu ritmo melhorar rapidamente. A plataforma se adapta ao meu preparo e me dá confiança para continuar. Nunca imaginei evoluir tão rápido.',
+          author: 'Elizeu Neto',
+          role: 'Corredor Iniciante',
+        },
+      ],
+    },
+    pricingAnchor: {
+      title: 'Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.',
+      subtitle: 'Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.',
+      intro: 'Mas você não precisa pagar esse valor para ter:',
+      benefits: [
+        'Personalização',
+        'Ajustes automáticos',
+        'Acompanhamento inteligente',
+        'Metodologia profissional',
+      ],
+    },
+    plans: {
+      badge: 'Planos',
+      title: 'Escolha o plano que acompanha sua evolução na corrida.',
+      subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
+      plans: [
+        {
+          name: 'TESTE GRATUITO',
+          description: 'Ideal para quem quer experimentar antes de se comprometer.',
+          price: 'R$ 0/14 dias',
+          cta: 'Testar por 14 dias',
+          highlight: true,
+          features: [
+            'Acesso aos treinos básicos',
+            'Primeiro plano personalizado liberado',
+            'Recalculo automático da semana conforme performance',
+            'Cancelamento automático sem cobrança',
+          ],
+        },
+        {
+          name: 'MENSAL',
+          description: 'Para quem quer treinar com inteligência.',
+          price: 'R$ 49,90/mês',
+          cta: 'Assinar Mensal',
+          features: [
+            'Todos os recursos do Teste Gratuito',
+            'Treinos adaptativos ilimitados',
+            'Estratégias completas para 5K, 10K e 21K',
+            'Painel avançado de métricas (pace, distância, constância)',
+          ],
+        },
+        {
+          name: 'Anual',
+          description: '(cobrado uma vez por ano)',
+          price: 'R$ 35,00 / mês',
+          cta: 'Assinar Anual',
+          features: [
+            'Todos os recursos do plano Mensal',
+            'Acesso garantido a novos modos de treino',
+            'Prioridade em novas funcionalidades',
+            'Economia de R$ 178 por ano',
+            'Pagamento único, sem surpresas',
+          ],
+        },
+      ],
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Perguntas frequentes',
+      subtitle: 'Tire suas dúvidas antes de começar seus treinos com a plataforma.',
+      faqs: [
+        {
+          question: 'Preciso ter experiência para usar a plataforma?',
+          answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
+        },
+        {
+          question: 'Como os treinos são personalizados?',
+          answer: 'O sistema analisa seu ritmo, disponibilidade, histórico e objetivo. A partir disso, monta e ajusta seu plano automaticamente conforme sua evolução.',
+        },
+        {
+          question: 'E se eu não conseguir seguir o treino do dia?',
+          answer: 'Sem problema. O sistema recalcula sua semana e adapta o plano ao seu ritmo real, evitando frustração e sobrecarga.',
+        },
+        {
+          question: 'Preciso de relógio Garmin ou outro smartwatch?',
+          answer: 'Não. Você pode começar usando apenas o celular.',
+        },
+      ],
+    },
+    footer: {
+      brand: 'Grit Run',
+      description: 'Plataforma completa para times de assessoria focados em crescimento.',
+      links: {
+        terms: 'Termos de uso',
+        privacy: 'Privacidade',
+        contact: 'Contato',
+      },
+      copyright: `© ${new Date().getFullYear()} Grit Run. Todos os direitos reservados.`,
+    },
   },
-  {
-    title: 'Semana otimizada para sua rotina',
-    description: 'Calendário inteligente que respeita seus dias e horários.',
+  
+  variantC: {
+    header: {
+      logo: 'Grit Run',
+      nav: {
+        benefits: 'Benefícios',
+        testimonials: 'Depoimentos',
+        howItWorks: 'Como x',
+        plans: 'Planos',
+        faq: 'FAQ',
+      },
+      cta: 'Começar grátis',
+    },
+    hero: {
+      badge: 'PARA CORREDORES DA VIDA REAL',
+      title: 'Correr bem é a terapia mais barata que existe.',
+      subtitle: 'Melhore seus tempos, corra sem dores e aproveite a vida. Com uma tecnologia que entende você, os treinos se adaptam a sua rotina.',
+      subtitleItalic: 'Sem cartão. Sem pressão.',
+      ctaPrimary: 'Começar teste gratuito',
+      ctaSecondary: 'Ver como funciona',
+      stats: [
+        { label: 'Treinos realizados', value: '2.400+' },
+        { label: 'Km registrados', value: '40.000+' },
+        { label: 'Satisfação média', value: '4.9/5' },
+      ],
+    },
+    dashboard: {
+      title: 'Seu plano da semana',
+      weekRange: 'Semana 17-23 Nov',
+      levelLabel: 'Seu nível',
+      weeklyProgressLabel: 'Progresso semanal',
+      kmThisWeekLabel: 'Km esta semana',
+      todayWorkoutLabel: 'Treino de hoje',
+      todayWorkoutType: 'Corrida contínua',
+      todayWorkoutDetails: '4 km • Intensidade leve',
+      todayWorkoutCta: 'Começar',
+      challengesLabel: 'Desafios da semana',
+      upcomingDaysLabel: 'Próximos dias',
+    },
+    painSection: {
+      title: 'Você corre sempre… e continua no mesmo pace.',
+      subtitle: 'Você já se pegou tendo esses pensamentos?',
+      statements: [
+        { emoji: '🌧️', text: '"Será que estou correndo certo?"' },
+        { emoji: '🌀', text: '"Por que todo mundo evolui e eu continuo no mesmo pace?"' },
+        { emoji: '🩹', text: '"E se eu estiver me machucando sem perceber?"' },
+        { emoji: '🏁', text: '"Eu queria correr 10 km, mas sempre paro antes…"' },
+        { emoji: '⏳', text: '"Quero treinar, mas minha rotina não ajuda."' },
+        { emoji: '🧭', text: '"Eu não sei por onde começar."' },
+      ],
+      conclusion: 'Esses pensamentos não significam que correr não é pra você.',
+      conclusionBold: 'Significa que falta um método para organizar tudo isso.',
+    },
+    experienceSection: {
+      badge: 'Experiência Grit Run',
+      titleLine1: 'Você já tentou força de vontade.',
+      titleLine2: 'Agora corra bem e viva leve.',
+      subtitle: 'Seu treino recalcula. Seu pace melhora. Sua vida continua.',
+      cta: 'Começar teste gratuito',
+    },
+    howItWorks: {
+      badge: 'Como funciona',
+      title: 'Como funciona o Sistema Inteligente de Treinos Adaptativos™',
+      subtitle: 'Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.',
+      steps: [
+        {
+          title: 'Você cria seu perfil de corrida',
+          description: 'Objetivo, disponibilidade, ritmo atual, limitações, histórico.',
+        },
+        {
+          title: 'O sistema monta seu plano automático',
+          description: 'Feito sob medida para sua vida.',
+        },
+        {
+          title: 'Cada treino se adapta ao seu desempenho real',
+          description: 'Correu mais forte? Ajusta. Sentiu cansaço? Reduz carga. Faltou treino? Remonta o cronograma.',
+        },
+        {
+          title: 'Você vê sua evolução diariamente',
+          description: 'Gráficos, progressão, pace, distância, constância.',
+        },
+        {
+          title: 'Resultado',
+          description: 'Um corredor mais confiante, consistente e preparado — em menos tempo e sem frustração.',
+        },
+      ],
+      swipeHint: 'Arraste para o lado para ver todas as etapas →',
+    },
+    benefits: {
+      badge: 'Benefícios',
+      title: 'A forma moderna de treinar corrida — sem abrir mão da sua vida.',
+      subtitle: 'Você corre. A vida acontece. O treino recalcula.',
+      features: [
+        {
+          title: 'Treinos inteligentes e personalizados',
+          description: 'Feitos com base em objetivos, ritmo, tempo e histórico real.',
+        },
+        {
+          title: 'Ajustes automáticos conforme performance',
+          description: 'Ritmo mudou? Corrida cansou? O plano se adapta pra você.',
+        },
+        {
+          title: 'Semana otimizada para sua rotina',
+          description: 'Calendário inteligente que respeita seus dias e horários.',
+        },
+        {
+          title: 'Painel de evolução completo',
+          description: 'Métricas claras: pace, distância, constância e progressão.',
+        },
+        {
+          title: 'Estratégia para 5K, 10K, 21K, 42K',
+          description: 'Planeje desafios com planos validados para cada distância.',
+        },
+        {
+          title: 'Programas validados por especialistas',
+          description: 'Baseados em métodos profissionais, com linguagem simples.',
+        },
+      ],
+    },
+    socialProof: {
+      badge: 'Resultados reais',
+      title: 'Corredores de todos os níveis já confiam na plataforma.',
+      subtitle: 'Depoimentos que mostram como tecnologia + treino inteligente transformam a experiência de quem corre.',
+      testimonials: [
+        {
+          content: 'A tecnologia se tornou minha maior aliada na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
+          author: 'Inácio Nogueira',
+          role: 'Maratonista',
+        },
+        {
+          content: 'A plataforma é essencial para qualquer pessoa correr melhor. Ela orienta, ajusta e guia — desde iniciantes até quem já corre distâncias maiores. Facilita muito a evolução com segurança.',
+          author: 'Rafael Soccol',
+          role: 'Corredor de Meia Maratona – Florianópolis',
+        },
+        {
+          content: 'Comecei a correr há pouco tempo e já vi meu ritmo melhorar rapidamente. A plataforma se adapta ao meu preparo e me dá confiança para continuar. Nunca imaginei evoluir tão rápido.',
+          author: 'Elizeu Neto',
+          role: 'Corredor Iniciante',
+        },
+      ],
+    },
+    pricingAnchor: {
+      title: 'Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.',
+      subtitle: 'Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.',
+      intro: 'Mas você não precisa pagar esse valor para ter:',
+      benefits: [
+        'Personalização',
+        'Ajustes automáticos',
+        'Acompanhamento inteligente',
+        'Metodologia profissional',
+      ],
+    },
+    plans: {
+      badge: 'Planos',
+      title: 'Escolha o plano que acompanha sua evolução na corrida.',
+      subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
+      plans: [
+        {
+          name: 'TESTE GRATUITO',
+          description: 'Ideal para quem quer experimentar antes de se comprometer.',
+          price: 'R$ 0/14 dias',
+          cta: 'Testar por 14 dias',
+          highlight: true,
+          features: [
+            'Acesso aos treinos básicos',
+            'Primeiro plano personalizado liberado',
+            'Recalculo automático da semana conforme performance',
+            'Cancelamento automático sem cobrança',
+          ],
+        },
+        {
+          name: 'MENSAL',
+          description: 'Para quem quer treinar com inteligência.',
+          price: 'R$ 49,90/mês',
+          cta: 'Assinar Mensal',
+          features: [
+            'Todos os recursos do Teste Gratuito',
+            'Treinos adaptativos ilimitados',
+            'Estratégias completas para 5K, 10K e 21K',
+            'Painel avançado de métricas (pace, distância, constância)',
+          ],
+        },
+        {
+          name: 'Anual',
+          description: '(cobrado uma vez por ano)',
+          price: 'R$ 35,00 / mês',
+          cta: 'Assinar Anual',
+          features: [
+            'Todos os recursos do plano Mensal',
+            'Acesso garantido a novos modos de treino',
+            'Prioridade em novas funcionalidades',
+            'Economia de R$ 178 por ano',
+            'Pagamento único, sem surpresas',
+          ],
+        },
+      ],
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Perguntas frequentes',
+      subtitle: 'Tire suas dúvidas antes de começar seus treinos com a plataforma.',
+      faqs: [
+        {
+          question: 'Preciso ter experiência para usar a plataforma?',
+          answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
+        },
+        {
+          question: 'Como os treinos são personalizados?',
+          answer: 'O sistema analisa seu ritmo, disponibilidade, histórico e objetivo. A partir disso, monta e ajusta seu plano automaticamente conforme sua evolução.',
+        },
+        {
+          question: 'E se eu não conseguir seguir o treino do dia?',
+          answer: 'Sem problema. O sistema recalcula sua semana e adapta o plano ao seu ritmo real, evitando frustração e sobrecarga.',
+        },
+        {
+          question: 'Preciso de relógio Garmin ou outro smartwatch?',
+          answer: 'Não. Você pode começar usando apenas o celular.',
+        },
+      ],
+    },
+    footer: {
+      brand: 'Grit Run',
+      description: 'Plataforma completa para times de assessoria focados em crescimento.',
+      links: {
+        terms: 'Termos de uso',
+        privacy: 'Privacidade',
+        contact: 'Contato',
+      },
+      copyright: `© ${new Date().getFullYear()} Grit Run. Todos os direitos reservados.`,
+    },
   },
-  {
-    title: 'Painel de evolução completo',
-    description: 'Métricas claras: pace, distância, constância e progressão.',
-  },
-  {
-    title: 'Estratégia para 5K, 10K, 21K, 42K',
-    description: 'Planeje desafios com planos validados para cada distância.',
-  },
-  {
-    title: 'Programas validados por especialistas',
-    description: 'Baseados em métodos profissionais, com linguagem simples.',
-  },
-];
+};
 
-const testimonials: Testimonial[] = [
-  {
-    content:
-      'A tecnologia se tornou minha maior aliada na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
-    author: 'Inácio Nogueira',
-    role: 'Maratonista',
-  },
-  {
-    content:
-      'A plataforma é essencial para qualquer pessoa correr melhor. Ela orienta, ajusta e guia — desde iniciantes até quem já corre distâncias maiores. Facilita muito a evolução com segurança.',
-    author: 'Rafael Soccol',
-    role: 'Corredor de Meia Maratona – Florianópolis',
-  },
-  {
-    content:
-      'Comecei a correr há pouco tempo e já vi meu ritmo melhorar rapidamente. A plataforma se adapta ao meu preparo e me dá confiança para continuar. Nunca imaginei evoluir tão rápido.',
-    author: 'Elizeu Neto',
-    role: 'Corredor Iniciante',
-  },
-];
-
-const steps: Step[] = [
-  {
-    title: 'Você cria seu perfil de corrida',
-    description: 'Objetivo, disponibilidade, ritmo atual, limitações, histórico.',
-  },
-  {
-    title: 'O sistema monta seu plano automático',
-    description: 'Feito sob medida para sua vida.',
-  },
-  {
-    title: 'Cada treino se adapta ao seu desempenho real',
-    description:
-      'Correu mais forte? Ajusta. Sentiu cansaço? Reduz carga. Faltou treino? Remonta o cronograma.',
-  },
-  {
-    title: 'Você vê sua evolução diariamente',
-    description: 'Gráficos, progressão, pace, distância, constância.',
-  },
-  {
-    title: 'Resultado',
-    description:
-      'Um corredor mais confiante, consistente e preparado — em menos tempo e sem frustração.',
-  },
-];
-
-const plans: Plan[] = [
-  {
-    name: 'TESTE GRATUITO',
-    description: 'Ideal para quem quer experimentar antes de se comprometer.',
-    price: 'R$ 0/14 dias',
-    cta: 'Testar por 14 dias',
-    highlight: true,
-    features: [
-      'Acesso aos treinos básicos',
-      'Primeiro plano personalizado liberado',
-      'Recalculo automático da semana conforme performance',
-      'Cancelamento automático sem cobrança',
-    ],
-  },
-  {
-    name: 'MENSAL',
-    description: 'Para quem quer treinar com inteligência.',
-    price: 'R$ 49,90/mês',
-    cta: 'Assinar Mensal',
-    features: [
-      'Todos os recursos do Teste Gratuito',
-      'Treinos adaptativos ilimitados',
-      'Estratégias completas para 5K, 10K e 21K',
-      'Painel avançado de métricas (pace, distância, constância)',
-    ],
-  },
-  {
-    name: 'Anual',
-    description: '(cobrado uma vez por ano)',
-    price: 'R$ 35,00 / mês',
-    cta: 'Assinar Anual',
-    features: [
-      'Todos os recursos do plano Mensal',
-      'Acesso garantido a novos modos de treino',
-      'Prioridade em novas funcionalidades',
-      'Economia de R$ 178 por ano',
-      'Pagamento único, sem surpresas',
-    ],
-  },
-];
-
-const faqs: Faq[] = [
-  {
-    question: 'Preciso ter experiência para usar a plataforma?',
-    answer:
-      'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
-  },
-  {
-    question: 'Como os treinos são personalizados?',
-    answer:
-      'O sistema analisa seu ritmo, disponibilidade, histórico e objetivo. A partir disso, monta e ajusta seu plano automaticamente conforme sua evolução.',
-  },
-  {
-    question: 'E se eu não conseguir seguir o treino do dia?',
-    answer:
-      'Sem problema. O sistema recalcula sua semana e adapta o plano ao seu ritmo real, evitando frustração e sobrecarga.',
-  },
-  {
-    question: 'Preciso de relógio Garmin ou outro smartwatch?',
-    answer:
-      'Não. Você pode começar usando apenas o celular.',
-  },
-];
+// Seleciona a variante ativa
+const copy = copyVariants[ACTIVE_VARIANT];
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
@@ -217,15 +874,15 @@ const LandingPage = () => {
               handleAnchorClick('hero');
             }}
           >
-            Grit Run
+            {copy.header.logo}
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
             {[
-              { label: 'Benefícios', id: 'benefits' },
-              { label: 'Depoimentos', id: 'social-proof' },
-              { label: 'Como funciona', id: 'steps' },
-              { label: 'Planos', id: 'plans' },
-              { label: 'FAQ', id: 'faq' },
+              { label: copy.header.nav.benefits, id: 'benefits' },
+              { label: copy.header.nav.testimonials, id: 'social-proof' },
+              { label: copy.header.nav.howItWorks, id: 'steps' },
+              { label: copy.header.nav.plans, id: 'plans' },
+              { label: copy.header.nav.faq, id: 'faq' },
             ].map((item) => (
               <a
                 key={item.id}
@@ -245,7 +902,7 @@ const LandingPage = () => {
             className="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:-translate-y-px hover:bg-sky-500"
             onClick={() => handleAnchorClick('plans')}
           >
-            Começar grátis
+            {copy.header.cta}
           </button>
         </div>
       </header>
@@ -286,19 +943,18 @@ const LandingPage = () => {
           <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:items-center lg:py-28">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-sky-700">
-              PARA CORREDORES DA VIDA REAL
+                {copy.hero.badge}
               </div>
               <div className="space-y-6">
                 <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
-                Correr bem não precisa custar sua vida.
+                  {copy.hero.title}
                 </h1>
                 
                 <p className="text-base text-slate-600 md:text-lg">
-                Melhore seus tempos, corra sem dores e aproveite a vida. <br/>
-                Com uma tecnologia que entende você, os treinos se adaptam a sua rotina.
+                  {copy.hero.subtitle}
                 </p>
                 <p className="text-base text-slate-600 md:text-lg">
-                  <em>Sem cartão. Sem pressão.</em>
+                  <em>{copy.hero.subtitleItalic}</em>
                 </p>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row">
@@ -307,18 +963,18 @@ const LandingPage = () => {
                   className="flex-1 rounded-full bg-sky-600 px-6 py-3 text-center text-base font-semibold text-white shadow-xl shadow-sky-200 transition hover:-translate-y-0.5 hover:bg-sky-500"
                   onClick={() => handleAnchorClick('plans')}
                 >
-                  Começar teste gratuito
+                  {copy.hero.ctaPrimary}
                 </button>
                 <button
                   type="button"
                   className="flex-1 rounded-full border border-slate-200 px-6 py-3 text-center text-base font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-600"
                   onClick={() => handleAnchorClick('steps')}
                 >
-                  Ver como funciona
+                  {copy.hero.ctaSecondary}
                 </button>
               </div>
               <div className="flex flex-wrap gap-8 text-sm text-slate-500">
-                {stats.map((stat) => (
+                {copy.hero.stats.map((stat) => (
                   <div key={stat.label}>
                     <p className="text-2xl font-semibold text-slate-900">
                       {stat.value}
@@ -337,9 +993,9 @@ const LandingPage = () => {
                   {/* Header Simplificado */}
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold text-white lg:text-xl">
-                      Seu plano da semana
+                      {copy.dashboard.title}
                     </h3>
-                    <p className="text-xs text-slate-400">Semana 17-23 Nov</p>
+                    <p className="text-xs text-slate-400">{copy.dashboard.weekRange}</p>
                   </div>
 
                   {/* TOPO: Progresso e Nível - Foco Principal */}
@@ -348,7 +1004,7 @@ const LandingPage = () => {
                     <div className="rounded-2xl bg-gradient-to-br from-sky-500/10 to-blue-500/10 p-5 backdrop-blur-sm">
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
-                          <p className="text-xs font-medium text-slate-300">Seu nível</p>
+                          <p className="text-xs font-medium text-slate-300">{copy.dashboard.levelLabel}</p>
                           <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-bold text-white">1</span>
                             <span className="text-sm text-slate-400">de 5</span>
@@ -385,12 +1041,12 @@ const LandingPage = () => {
                       </div>
                       <div className="mt-4 flex items-center gap-4 text-sm">
                         <div>
-                          <p className="text-xs text-slate-400">Progresso semanal</p>
+                          <p className="text-xs text-slate-400">{copy.dashboard.weeklyProgressLabel}</p>
                           <p className="font-semibold text-white">2 de 3 treinos</p>
                         </div>
                         <div className="h-8 w-px bg-slate-700" />
                         <div>
-                          <p className="text-xs text-slate-400">Km esta semana</p>
+                          <p className="text-xs text-slate-400">{copy.dashboard.kmThisWeekLabel}</p>
                           <p className="font-semibold text-white">8 de 12 km</p>
                         </div>
                       </div>
@@ -400,12 +1056,12 @@ const LandingPage = () => {
                     <div className="rounded-2xl bg-gradient-to-r from-orange-500/20 to-amber-500/20 p-4 backdrop-blur-sm">
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
-                          <p className="mb-1 text-xs font-medium text-orange-300">Treino de hoje</p>
-                          <p className="text-base font-semibold text-white">Corrida contínua</p>
-                          <p className="mt-1 text-xs text-slate-300">4 km • Intensidade leve</p>
+                          <p className="mb-1 text-xs font-medium text-orange-300">{copy.dashboard.todayWorkoutLabel}</p>
+                          <p className="text-base font-semibold text-white">{copy.dashboard.todayWorkoutType}</p>
+                          <p className="mt-1 text-xs text-slate-300">{copy.dashboard.todayWorkoutDetails}</p>
                         </div>
                         <div className="ml-4 rounded-full bg-orange-500 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-orange-500/30">
-                          Começar
+                          {copy.dashboard.todayWorkoutCta}
                         </div>
                       </div>
                     </div>
@@ -414,7 +1070,7 @@ const LandingPage = () => {
                   {/* MEIO: Desafios Simplificados */}
                   <div className="space-y-3">
                     <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                      Desafios da semana
+                      {copy.dashboard.challengesLabel}
                     </p>
                     <div className="space-y-2">
                       {[
@@ -450,7 +1106,7 @@ const LandingPage = () => {
                   {/* BAIXO: Calendário Semanal Simplificado */}
                   <div className="space-y-3">
                     <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                      Próximos dias
+                      {copy.dashboard.upcomingDaysLabel}
                     </p>
                     <div className="grid grid-cols-7 gap-1.5">
                       {[
@@ -520,17 +1176,17 @@ const LandingPage = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-              Você corre sempre… e continua no mesmo pace.”
+                {copy.painSection.title}
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
 
               </p>
               <p className="mt-6 text-lg font-medium text-slate-700 md:text-xl">
-                Você já se pegou tendo esses pensamentos?
+                {copy.painSection.subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {painStatements.map((item) => (
+              {copy.painSection.statements.map((item) => (
                 <article
                   key={item.text}
                   className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-lg shadow-slate-200/70 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -544,9 +1200,9 @@ const LandingPage = () => {
               ))}
             </div>
             <div className="mt-10 rounded-2xl border border-dashed border-sky-200 bg-sky-50/70 p-6 text-center text-slate-700">
-              <p>Esses pensamentos não significam que correr não é pra você.</p>
+              <p>{copy.painSection.conclusion}</p>
               <p className="mt-2 font-semibold text-slate-900">
-                Significa que falta um método para organizar tudo isso.
+                {copy.painSection.conclusionBold}
               </p>
             </div>
           </div>
@@ -556,24 +1212,25 @@ const LandingPage = () => {
         <section className="bg-slate-900 text-white">
           <div className="mx-auto max-w-5xl px-6 py-20 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-sky-300">
-              Experiência Grit Run
+              {copy.experienceSection.badge}
             </p>
             <div className="mt-6 space-y-4">
               <p className="text-4xl font-semibold leading-tight md:text-5xl">
-              Você já tentou força de vontade.              </p>
+                {copy.experienceSection.titleLine1}
+              </p>
               <p className="text-4xl font-semibold leading-tight text-sky-200 md:text-5xl">
-                Agora corra bem e viva leve.
+                {copy.experienceSection.titleLine2}
               </p>
             </div>
             <p className="mt-8 text-lg text-slate-200">
-            Seu treino recalcula. Seu pace melhora. Sua vida continua.
+              {copy.experienceSection.subtitle}
             </p>
             <button
               type="button"
               className="mx-auto mt-12 flex w-full max-w-md items-center justify-center rounded-full bg-sky-400 px-8 py-4 text-base font-semibold text-slate-900 shadow-2xl shadow-sky-500/30 transition hover:-translate-y-0.5 hover:bg-sky-300"
               onClick={() => handleAnchorClick('plans')}
             >
-              Começar teste gratuito
+              {copy.experienceSection.cta}
             </button>
           </div>
         </section>
@@ -584,22 +1241,21 @@ const LandingPage = () => {
             <div className="md:flex md:items-end md:justify-between">
               <div className="space-y-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-                  Como funciona
+                  {copy.howItWorks.badge}
                 </p>
                 <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-                  Como funciona o Sistema Inteligente de Treinos Adaptativos™
+                  {copy.howItWorks.title}
                 </h2>
                 <p className="text-base text-slate-600 md:text-lg">
-                  Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.
+                  {copy.howItWorks.subtitle}
                 </p>
               </div>
             </div>
             <div className="mt-16 overflow-x-auto">
               <div className="relative mx-auto flex min-w-[960px] items-stretch gap-6 md:gap-4">
                 <div className="pointer-events-none absolute left-6 right-6 top-12 hidden h-px bg-sky-200 md:block" />
-                {steps.map((step, index) => {
-                  const isLast = index === steps.length - 1;
-                  const isFirst = index === 0;
+                {copy.howItWorks.steps.map((step, index) => {
+                  const isLast = index === copy.howItWorks.steps.length - 1;
                   return (
                     <div key={step.title} className="relative flex items-stretch gap-6">
                       <article
@@ -629,7 +1285,7 @@ const LandingPage = () => {
                           </span>
                         )}
                       </article>
-                      {index !== steps.length - 1 && (
+                      {index !== copy.howItWorks.steps.length - 1 && (
                         <div className="hidden flex-1 items-center justify-center md:flex">
                           <span className="h-px w-10 bg-sky-300" />
                           <span className="h-2 w-2 rounded-full bg-sky-300" />
@@ -640,7 +1296,7 @@ const LandingPage = () => {
                 })}
               </div>
               <div className="mt-6 text-center text-xs text-slate-400 md:hidden">
-                Arraste para o lado para ver todas as etapas →
+                {copy.howItWorks.swipeHint}
               </div>
             </div>
           </div>
@@ -651,17 +1307,17 @@ const LandingPage = () => {
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="space-y-4 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-                Benefícios
+                {copy.benefits.badge}
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-                A forma moderna de treinar corrida — sem abrir mão da sua vida.
+                {copy.benefits.title}
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
-              Você corre. A vida acontece. O treino recalcula.
+                {copy.benefits.subtitle}
               </p>
             </div>
             <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {features.map((feature) => (
+              {copy.benefits.features.map((feature) => (
                 <article
                   key={feature.title}
                   className="group rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_25px_60px_-40px_rgba(15,23,42,0.35)] transition hover:-translate-y-1 hover:border-sky-200"
@@ -684,17 +1340,17 @@ const LandingPage = () => {
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="flex flex-col gap-6 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-                Resultados reais
+                {copy.socialProof.badge}
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-                Corredores de todos os níveis já confiam na plataforma.
+                {copy.socialProof.title}
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
-                Depoimentos que mostram como tecnologia + treino inteligente transformam a experiência de quem corre.
+                {copy.socialProof.subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {testimonials.map((testimonial) => (
+              {copy.socialProof.testimonials.map((testimonial) => (
                 <blockquote
                   key={testimonial.author}
                   className="flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg shadow-slate-200/70"
@@ -719,57 +1375,29 @@ const LandingPage = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300">
               </p>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.
+                {copy.pricingAnchor.title}
               </h2>
               <p className="text-2xl font-semibold text-slate-200">
-                Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.
+                {copy.pricingAnchor.subtitle}
               </p>
             </div>
             <div className="mt-12 rounded-3xl border-2 border-sky-500/30 bg-gradient-to-br from-slate-800/90 to-slate-900/90 p-8 shadow-2xl shadow-sky-500/10 md:p-12">
               <p className="mb-8 text-center text-xl font-semibold leading-tight text-white md:text-2xl">
-                Mas você não precisa pagar esse valor para ter:
+                {copy.pricingAnchor.intro}
               </p>
               <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20 text-sky-300 shadow-lg shadow-sky-500/20">
-                    <span className="text-base font-semibold">✓</span>
+                {copy.pricingAnchor.benefits.map((benefit, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20 text-sky-300 shadow-lg shadow-sky-500/20">
+                      <span className="text-base font-semibold">✓</span>
+                    </div>
+                    <div className="flex-1 pt-0.5">
+                      <p className="text-base font-semibold leading-relaxed text-white">
+                        {benefit}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1 pt-0.5">
-                    <p className="text-base font-semibold leading-relaxed text-white">
-                      Personalização
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20 text-sky-300 shadow-lg shadow-sky-500/20">
-                    <span className="text-base font-semibold">✓</span>
-                  </div>
-                  <div className="flex-1 pt-0.5">
-                    <p className="text-base font-semibold leading-relaxed text-white">
-                      Ajustes automáticos
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20 text-sky-300 shadow-lg shadow-sky-500/20">
-                    <span className="text-base font-semibold">✓</span>
-                  </div>
-                  <div className="flex-1 pt-0.5">
-                    <p className="text-base font-semibold leading-relaxed text-white">
-                      Acompanhamento inteligente
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20 text-sky-300 shadow-lg shadow-sky-500/20">
-                    <span className="text-base font-semibold">✓</span>
-                  </div>
-                  <div className="flex-1 pt-0.5">
-                    <p className="text-base font-semibold leading-relaxed text-white">
-                      Metodologia profissional
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -780,16 +1408,17 @@ const LandingPage = () => {
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="space-y-4 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-                Planos
+                {copy.plans.badge}
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-              Escolha o plano que acompanha sua evolução na corrida.
+                {copy.plans.title}
               </h2>
               <p className="text-base text-slate-600 md:text-lg">
-              Todos incluem suporte, atualizações contínuas e acesso seguro.              </p>
+                {copy.plans.subtitle}
+              </p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {plans.map((plan) => (
+              {copy.plans.plans.map((plan) => (
                 <article
                   key={plan.name}
                   className={`flex h-full flex-col rounded-3xl border p-6 text-center shadow-[0_30px_80px_-50px_rgba(12,74,110,0.6)] transition hover:-translate-y-1 ${
@@ -835,16 +1464,17 @@ const LandingPage = () => {
           <div className="mx-auto max-w-4xl px-6 py-20">
             <div className="space-y-4 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-                FAQ
+                {copy.faq.badge}
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-                Perguntas frequentes
+                {copy.faq.title}
               </h2>
               <p className="text-base text-slate-600">
-              Tire suas dúvidas antes de começar seus treinos com a plataforma.              </p>
+                {copy.faq.subtitle}
+              </p>
             </div>
             <div className="mt-12 space-y-6">
-              {faqs.map((faq) => (
+              {copy.faq.faqs.map((faq) => (
                 <details
                   key={faq.question}
                   className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition"
@@ -867,9 +1497,9 @@ const LandingPage = () => {
       <footer className="border-t border-slate-200 bg-white/90">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div>
-            <p className="text-lg font-semibold text-slate-900">Grit Run</p>
+            <p className="text-lg font-semibold text-slate-900">{copy.footer.brand}</p>
             <p className="text-sm text-slate-600">
-              Plataforma completa para times de assessoria focados em crescimento.
+              {copy.footer.description}
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
@@ -878,25 +1508,25 @@ const LandingPage = () => {
               className="transition hover:text-slate-900"
               onClick={(event) => event.preventDefault()}
             >
-              Termos de uso
+              {copy.footer.links.terms}
             </a>
             <a
               href="#"
               className="transition hover:text-slate-900"
               onClick={(event) => event.preventDefault()}
             >
-              Privacidade
+              {copy.footer.links.privacy}
             </a>
             <a
               href="#"
               className="transition hover:text-slate-900"
               onClick={(event) => event.preventDefault()}
             >
-              Contato
+              {copy.footer.links.contact}
             </a>
           </div>
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} Grit Run. Todos os direitos reservados.
+            {copy.footer.copyright}
           </p>
         </div>
       </footer>
