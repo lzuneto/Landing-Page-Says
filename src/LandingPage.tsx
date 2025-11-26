@@ -1002,7 +1002,7 @@ const LandingPage = () => {
         >
           {/* Mascote Velo no Hero - Desktop: entre as colunas */}
           <div 
-            className="absolute top-[70%] hidden h-auto w-auto max-h-[260px] pointer-events-none transition-transform duration-300 hover:scale-105 lg:block"
+            className="hidden"
             style={{ 
               left: 'calc(50% + 600px)',
               transform: 'translate(-50%, -50%)',
