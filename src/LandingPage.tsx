@@ -966,7 +966,6 @@ const LandingPage = () => {
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
             {[
               { label: copy.header.nav.benefits, id: 'benefits' },
-              { label: copy.header.nav.testimonials, id: 'testimonials' },
               { label: copy.header.nav.howItWorks, id: 'steps' },
               { label: copy.header.nav.plans, id: 'plans' },
               { label: copy.header.nav.faq, id: 'faq' },
@@ -1582,7 +1581,7 @@ const LandingPage = () => {
         </section>
 
         {/* Depoimentos */}
-        <section id="testimonials" className="bg-white">
+        <section id="testimonials" className="hidden bg-white">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="space-y-4 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
