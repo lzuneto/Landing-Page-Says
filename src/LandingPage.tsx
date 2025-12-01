@@ -422,7 +422,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       cta: 'Começar',
     },
     hero: {
-      badge: 'PARA QUEM QUER EVOLUIR NA CORRIDA',
+      badge: 'EVOLUA SUA CORRIDA',
       title: 'Do zero aos 5KM em 8 semanas.',
       subtitle: 'Receba o suporte que você precisa como corredor com planos de corrida personalizados para atingir seus objetivos — desde treinar para seu 5K mais rápido até completar sua primeira maratona.',
       subtitleItalic: 'A forma moderna de treinar corrida.',
