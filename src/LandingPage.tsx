@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 // ============================================
 // CONFIGURAÇÃO DE COPY - ESCOLHA A VARIANTE AQUI
 // ============================================
-const ACTIVE_VARIANT = 'variantA' as const;
+const ACTIVE_VARIANT = 'variantB' as const;
 type VariantKey = 'variantA' | 'variantB' | 'variantC';
 
 // ============================================
@@ -37,6 +37,7 @@ type Plan = {
   cta: string;
   highlight?: boolean;
   features: string[];
+  paymentLink: string;
 };
 
 type Faq = {
@@ -179,7 +180,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       title: 'Leve sua corrida para o próximo nível.',
       subtitle: 'Receba o suporte que você precisa como corredor com planos de corrida personalizados para atingir seus objetivos — desde treinar para seu 5K mais rápido até completar sua primeira maratona.',
       subtitleItalic: 'Sem cartão. Sem pressão.',
-      ctaPrimary: 'Começar teste gratuito',
+      ctaPrimary: 'Começar',
       ctaSecondary: 'Ver como funciona',
       stats: [
         { label: 'Treinos realizados', value: '2.400+' },
@@ -228,7 +229,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       ],
       conclusion: 'O que faltava era um caminho claro e testado para te levar até lá.',
       conclusionBold: 'E é exatamente isso que você vai ter agora…',
-      cta: 'Começar teste gratuito',
+      cta: 'Começar',
     },
     howItWorks: {
       badge: 'Como funciona',
@@ -340,28 +341,17 @@ const copyVariants: Record<VariantKey, CopyData> = {
       subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
       plans: [
         {
-          name: 'TESTE GRATUITO',
-          description: 'Ideal para quem quer experimentar antes de se comprometer.',
-          price: 'R$ 0/14 dias',
-          cta: 'Testar por 14 dias',
-          highlight: true,
-          features: [
-            'Acesso aos treinos básicos',
-            'Primeiro plano personalizado liberado',
-            'Recalculo automático da semana conforme performance',
-            'Cancelamento automático sem cobrança',
-          ],
-        },
-        {
           name: 'MENSAL',
           description: 'Para quem quer treinar com inteligência.',
           price: 'R$ 49,90/mês',
           cta: 'Assinar Mensal',
+          highlight: true,
+          paymentLink: 'https://www.asaas.com/c/zts26bonzs3uwjef',
           features: [
-            'Todos os recursos do Teste Gratuito',
             'Treinos adaptativos ilimitados',
             'Estratégias completas para 5K, 10K e 21K',
             'Painel avançado de métricas (pace, distância, constância)',
+            'Ajustes automáticos conforme performance',
           ],
         },
         {
@@ -369,6 +359,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
           description: '(cobrado uma vez por ano)',
           price: 'R$ 35,00 / mês',
           cta: 'Assinar Anual',
+          paymentLink: 'https://www.asaas.com/c/mvlqe3ca71dbpwli',
           features: [
             'Todos os recursos do plano Mensal',
             'Acesso garantido a novos modos de treino',
@@ -389,8 +380,8 @@ const copyVariants: Record<VariantKey, CopyData> = {
           answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
         },
         {
-          question: 'Preciso cadastrar cartão para fazer o teste gratuito?',
-          answer: 'Não! Sem cartão e sem pressão, você pode testar nosso aplicativo durante 14 dias gratuitamente.',
+          question: 'Como funciona o cancelamento?',
+          answer: 'Você pode cancelar a qualquer momento. Não há fidelidade ou multa por cancelamento. O acesso permanece ativo até o final do período pago.',
         },
         {
           question: 'O pagamento é seguro?',
@@ -414,7 +405,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       address: 'Endereço: Rua Santa Luzia, 100, Sala 604, Trindade, Florianópolis/SC – Brasil',
       supportTitle: 'Ficou com alguma dúvida?',
       email: 'contato@gritsoftwares.com.br',
-      whatsapp: '+55 48 98861-4792',
+      whatsapp: '+55 48 98817-7698',
     },
   },
   
@@ -428,14 +419,14 @@ const copyVariants: Record<VariantKey, CopyData> = {
         plans: 'Planos',
         faq: 'FAQ',
       },
-      cta: 'Começar grátis',
+      cta: 'Começar',
     },
     hero: {
-      badge: 'PARA CORREDORES DA VIDA REAL',
-      title: 'Transforme sua vida, uma corrida de cada vez.',
-      subtitle: 'Veja progresso real em cada treino. Planeje desafios com planos validados para cada distância. (5K, 10K, 21K, 42K)',
-      subtitleItalic: 'Sem cartão. Sem pressão.',
-      ctaPrimary: 'Começar teste gratuito',
+      badge: 'PARA QUEM QUER EVOLUIR NA CORRIDA',
+      title: 'Do zero aos 5KM em 8 semanas.',
+      subtitle: 'Receba o suporte que você precisa como corredor com planos de corrida personalizados para atingir seus objetivos — desde treinar para seu 5K mais rápido até completar sua primeira maratona.',
+      subtitleItalic: 'A forma moderna de treinar corrida.',
+      ctaPrimary: 'Começar',
       ctaSecondary: 'Ver como funciona',
       stats: [
         { label: 'Treinos realizados', value: '2.400+' },
@@ -457,24 +448,24 @@ const copyVariants: Record<VariantKey, CopyData> = {
       upcomingDaysLabel: 'Próximos dias',
     },
     painSection: {
-      title: 'Você corre sempre… e continua no mesmo pace.',
-      subtitle: 'Você já se pegou tendo esses pensamentos?',
+      title: 'Você tenta, mas NUNCA consegue EVOLUIR na CORRIDA?',
+      subtitle: 'Já se pegou pensando:',
       statements: [
         { emoji: '🌧️', text: '"Será que estou correndo certo?"' },
         { emoji: '🌀', text: '"Por que todo mundo evolui e eu continuo no mesmo pace?"' },
         { emoji: '🩹', text: '"E se eu estiver me machucando sem perceber?"' },
-        { emoji: '🏁', text: '"Eu queria correr 10 km, mas sempre paro antes…"' },
+        { emoji: '🏁', text: '"Eu queria correr 5 km, mas sempre paro antes…"' },
         { emoji: '⏳', text: '"Quero treinar, mas minha rotina não ajuda."' },
         { emoji: '🧭', text: '"Eu não sei por onde começar."' },
       ],
-      conclusion: 'Esses pensamentos não significam que correr não é pra você.',
-      conclusionBold: 'Significa que falta um método para organizar tudo isso.',
+      conclusion: 'Se esses pensamentos já passaram pela sua cabeça...',
+      conclusionBold: 'Então nosso aplicativo é para você.',
     },
     experienceSection: {
-      badge: 'Experiência Grit Run',
-      titleLine1: 'Você já tentou força de vontade.',
-      titleLine2: 'Agora corra bem e viva leve.',
-      subtitle: 'Seu treino recalcula. Seu pace melhora. Sua vida continua.',
+      badge: 'Experimente o Grit Run',
+      titleLine1: 'O problema nunca foi você…',
+      titleLine2: 'Você só não tinha um plano que realmente funcionasse!',
+      subtitle: 'Você já tentou correr e desistiu? Já saiu empolgado para treinar, mas parou no meio porque cansou ou sentiu dor?',
       intro: 'Isso acontece porque:',
       problems: [
         'Você sai para correr sem um plano e acaba quebrando no meio do treino.',
@@ -484,11 +475,11 @@ const copyVariants: Record<VariantKey, CopyData> = {
       ],
       conclusion: 'O que faltava era um caminho claro e testado para te levar até lá.',
       conclusionBold: 'E é exatamente isso que você vai ter agora…',
-      cta: 'Começar teste gratuito',
+      cta: 'Começar',
     },
     howItWorks: {
       badge: 'Como funciona',
-      title: 'Como funciona o Sistema Inteligente de Treinos Adaptativos™',
+      title: 'Como funciona o aplicativo Grit Run™',
       subtitle: 'Em cinco passos o Grit Run entende quem você é, cria treinos sob medida e ajusta tudo em tempo real.',
       steps: [
         {
@@ -516,8 +507,8 @@ const copyVariants: Record<VariantKey, CopyData> = {
     },
     benefits: {
       badge: 'Benefícios',
-      title: 'A forma moderna de treinar corrida — sem abrir mão da sua vida.',
-      subtitle: 'Você corre. A vida acontece. O treino recalcula.',
+      title: 'A forma moderna de treinar corrida.',
+      subtitle: 'Você corre. A evolução acontece. O treino recalcula.',
       features: [
         {
           title: 'Treinos inteligentes e personalizados',
@@ -563,7 +554,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       subtitle: 'Veja o que quem usa o Grit Run tem a dizer sobre a experiência.',
       testimonials: [
         {
-          content: 'A tecnologia se tornou minha maior aliada na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
+          content: 'O aplicativo se tornou minha maior aliado na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.',
           author: 'Inácio Nogueira',
           role: 'Maratonista',
         },
@@ -592,32 +583,21 @@ const copyVariants: Record<VariantKey, CopyData> = {
     },
     plans: {
       badge: 'Planos',
-      title: 'Escolha o plano que acompanha sua evolução na corrida.',
+      title: 'Escolha seu plano!',
       subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
       plans: [
         {
-          name: 'TESTE GRATUITO',
-          description: 'Ideal para quem quer experimentar antes de se comprometer.',
-          price: 'R$ 0/14 dias',
-          cta: 'Testar por 14 dias',
-          highlight: true,
-          features: [
-            'Acesso aos treinos básicos',
-            'Primeiro plano personalizado liberado',
-            'Recalculo automático da semana conforme performance',
-            'Cancelamento automático sem cobrança',
-          ],
-        },
-        {
           name: 'MENSAL',
-          description: 'Para quem quer treinar com inteligência.',
+          description: 'Ideal para conhecer o aplicativo',
           price: 'R$ 49,90/mês',
           cta: 'Assinar Mensal',
+          highlight: true,
+          paymentLink: 'https://www.asaas.com/c/zts26bonzs3uwjef',
           features: [
-            'Todos os recursos do Teste Gratuito',
             'Treinos adaptativos ilimitados',
             'Estratégias completas para 5K, 10K e 21K',
             'Painel avançado de métricas (pace, distância, constância)',
+            'Ajustes automáticos conforme performance',
           ],
         },
         {
@@ -625,12 +605,13 @@ const copyVariants: Record<VariantKey, CopyData> = {
           description: '(cobrado uma vez por ano)',
           price: 'R$ 35,00 / mês',
           cta: 'Assinar Anual',
+          paymentLink: 'https://www.asaas.com/c/mvlqe3ca71dbpwli',
           features: [
             'Todos os recursos do plano Mensal',
             'Acesso garantido a novos modos de treino',
             'Prioridade em novas funcionalidades',
             'Economia de R$ 178 por ano',
-            'Pagamento único, sem surpresas',
+            'Pagamento único',
           ],
         },
       ],
@@ -645,8 +626,8 @@ const copyVariants: Record<VariantKey, CopyData> = {
           answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
         },
         {
-          question: 'Preciso cadastrar cartão para fazer o teste gratuito?',
-          answer: 'Não! Sem cartão e sem pressão, você pode testar nosso aplicativo durante 14 dias gratuitamente.',
+          question: 'Como funciona o cancelamento?',
+          answer: 'Você pode cancelar a qualquer momento. Não há fidelidade ou multa por cancelamento. O acesso permanece ativo até o final do período pago.',
         },
         {
           question: 'O pagamento é seguro?',
@@ -670,7 +651,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       address: 'Endereço: Rua Santa Luzia, 100, Sala 604, Trindade, Florianópolis/SC – Brasil',
       supportTitle: 'Ficou com alguma dúvida?',
       email: 'contato@gritsoftwares.com.br',
-      whatsapp: '+55 48 98861-4792',
+      whatsapp: '+55 48 98817-7698',
     },
   },
   
@@ -687,11 +668,11 @@ const copyVariants: Record<VariantKey, CopyData> = {
       cta: 'Começar grátis',
     },
     hero: {
-      badge: 'PARA CORREDORES DA VIDA REAL',
+      badge: 'PARA QUEM QUER EVOLUIR NA CORRIDA',
       title: 'Sua melhor versão começa na próxima corrida.',
       subtitle: 'Melhore seus tempos, corra sem dores e aproveite a vida. Com uma tecnologia que entende você, os treinos se adaptam a sua rotina.',
       subtitleItalic: 'Sem cartão. Sem pressão.',
-      ctaPrimary: 'Começar teste gratuito',
+      ctaPrimary: 'Começar',
       ctaSecondary: 'Ver como funciona',
       stats: [
         { label: 'Treinos realizados', value: '2.400+' },
@@ -740,7 +721,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       ],
       conclusion: 'O que faltava era um caminho claro e testado para te levar até lá.',
       conclusionBold: 'E é exatamente isso que você vai ter agora…',
-      cta: 'Começar teste gratuito',
+      cta: 'Começar',
     },
     howItWorks: {
       badge: 'Como funciona',
@@ -852,28 +833,17 @@ const copyVariants: Record<VariantKey, CopyData> = {
       subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
       plans: [
         {
-          name: 'TESTE GRATUITO',
-          description: 'Ideal para quem quer experimentar antes de se comprometer.',
-          price: 'R$ 0/14 dias',
-          cta: 'Testar por 14 dias',
-          highlight: true,
-          features: [
-            'Acesso aos treinos básicos',
-            'Primeiro plano personalizado liberado',
-            'Recalculo automático da semana conforme performance',
-            'Cancelamento automático sem cobrança',
-          ],
-        },
-        {
           name: 'MENSAL',
           description: 'Para quem quer treinar com inteligência.',
           price: 'R$ 49,90/mês',
           cta: 'Assinar Mensal',
+          highlight: true,
+          paymentLink: 'https://www.asaas.com/c/zts26bonzs3uwjef',
           features: [
-            'Todos os recursos do Teste Gratuito',
             'Treinos adaptativos ilimitados',
             'Estratégias completas para 5K, 10K e 21K',
             'Painel avançado de métricas (pace, distância, constância)',
+            'Ajustes automáticos conforme performance',
           ],
         },
         {
@@ -881,6 +851,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
           description: '(cobrado uma vez por ano)',
           price: 'R$ 35,00 / mês',
           cta: 'Assinar Anual',
+          paymentLink: 'https://www.asaas.com/c/mvlqe3ca71dbpwli',
           features: [
             'Todos os recursos do plano Mensal',
             'Acesso garantido a novos modos de treino',
@@ -901,8 +872,8 @@ const copyVariants: Record<VariantKey, CopyData> = {
           answer: 'Não. A plataforma foi criada para iniciantes, intermediários e avançados. Os treinos se adaptam automaticamente ao seu nível atual.',
         },
         {
-          question: 'Preciso cadastrar cartão para fazer o teste gratuito?',
-          answer: 'Não! Sem cartão e sem pressão, você pode testar nosso aplicativo durante 14 dias gratuitamente.',
+          question: 'Como funciona o cancelamento?',
+          answer: 'Você pode cancelar a qualquer momento. Não há fidelidade ou multa por cancelamento. O acesso permanece ativo até o final do período pago.',
         },
         {
           question: 'O pagamento é seguro?',
@@ -926,7 +897,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       address: 'Endereço: Rua Santa Luzia, 100, Sala 604, Trindade, Florianópolis/SC – Brasil',
       supportTitle: 'Ficou com alguma dúvida?',
       email: 'contato@gritsoftwares.com.br',
-      whatsapp: '+55 48 98861-4792',
+      whatsapp: '+55 48 98817-7698',
     },
   },
 };
@@ -1365,7 +1336,7 @@ const LandingPage = () => {
                     className="mx-auto mt-8 flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-600 to-blue-600 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-sky-500/30 transition-all hover:-translate-y-0.5 hover:from-sky-500 hover:to-blue-500 hover:shadow-2xl hover:shadow-sky-500/40"
                     onClick={() => handleAnchorClick('plans')}
                   >
-                    <span>Começar teste gratuito</span>
+                    <span>Começar</span>
                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -1744,7 +1715,7 @@ const LandingPage = () => {
                 {copy.plans.subtitle}
               </p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
               {copy.plans.plans.map((plan) => (
                 <article
                   key={plan.name}
@@ -1769,17 +1740,18 @@ const LandingPage = () => {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
-                    className={`mt-10 w-full rounded-full px-6 py-3 text-sm font-semibold transition ${
+                  <a
+                    href={plan.paymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-10 w-full rounded-full px-6 py-3 text-sm font-semibold transition text-center block ${
                       plan.highlight
                         ? 'bg-sky-600 text-white hover:bg-sky-500'
                         : 'border border-slate-200 text-slate-800 hover:border-sky-300 hover:text-sky-600'
                     }`}
-                    onClick={() => handleAnchorClick('faq')}
                   >
                     {plan.cta}
-                  </button>
+                  </a>
                 </article>
               ))}
             </div>
@@ -1883,7 +1855,7 @@ const LandingPage = () => {
                   </div>
                 </a>
                 <a
-                  href={`https://wa.me/5548988614792`}
+                  href={`https://wa.me/5548988177698`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3 text-sm text-slate-600 transition hover:text-sky-600"
