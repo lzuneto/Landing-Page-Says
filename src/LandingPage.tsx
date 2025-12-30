@@ -678,7 +678,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
     },
     hero: {
       badge: 'Sistema para treinadores de corrida',
-      title: 'Torne-se o dono de assessoria com centenas de alunos ativos, sem precisar trabalhar mais horas.',
+      title: 'Torne-se o dono de uma assessoria com centenas de alunos ativos, sem precisar trabalhar mais horas.',
       subtitle: 'Mais de 13 milhões de brasileiros correm, mas um treinador que usa planilhas não consegue escalar. Você não precisa trabalhar mais horas para ganhar mais como treinador de corrida. O Grit Run organiza sua operação e cria uma comunidade engajada para que sua assessoria cresça sem depender exclusivamente do seu tempo.',
       subtitleItalic: '',
       ctaPrimary: 'Começar',
