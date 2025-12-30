@@ -678,7 +678,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
     },
     hero: {
       badge: 'Sistema para treinadores de corrida',
-      title: 'De treinador mal remunerado e sobrecarregado para dono de assessoria com centenas de alunos ativos.',
+      title: 'Torne-se o dono de assessoria com centenas de alunos ativos, sem precisar trabalhar mais horas.',
       subtitle: 'Mais de 13 milhões de brasileiros correm, mas um treinador que usa planilhas não consegue escalar. Você não precisa trabalhar mais horas para ganhar mais como treinador de corrida. O Grit Run organiza sua operação e cria uma comunidade engajada para que sua assessoria cresça sem depender exclusivamente do seu tempo.',
       subtitleItalic: '',
       ctaPrimary: 'Começar',
@@ -1064,7 +1064,7 @@ const LandingPage = () => {
           </nav>
           {ACTIVE_VARIANT === 'variantC' ? (
             <a
-              href="https://wa.me/5548988177698?text=Olá!%20Quero%20entrar%20no%20grupo%20do%20Grit%20Run"
+              href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-200 transition hover:-translate-y-px hover:bg-green-500"
@@ -1201,7 +1201,7 @@ const LandingPage = () => {
               {ACTIVE_VARIANT === 'variantC' ? (
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <a
-                    href="https://wa.me/5548988177698?text=Olá!%20Quero%20entrar%20no%20grupo%20do%20Grit%20Run"
+                    href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 rounded-full bg-green-600 px-6 py-3 text-center text-base font-semibold text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2"
@@ -2053,7 +2053,7 @@ const LandingPage = () => {
                         Centralizando treinos, feedbacks e histórico dos alunos em um único lugar, você reduz mensagens soltas, retrabalho e decisões no improviso.
                       </p>
                       <p>
-                        Com menos tempo gasto na gestão, sobra energia para acompanhar melhor os alunos — e isso reflete diretamente na permanência deles na assessoria.
+                        Com menos tempo gasto na gestão, sobra energia para adquirir novos alunos e acompanhar melhor os atuais.
                       </p>
                     </div>
                   </div>
@@ -2130,7 +2130,7 @@ const LandingPage = () => {
                         1
                       </div>
                       <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
-                        Somos desenvolvedores que cansaram de ver o mercado de corrida mal atendido pelas ferramentas atuais.
+                        Somos desenvolvedores que cansaram de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
                       </p>
                     </div>
                   </div>
@@ -2230,7 +2230,7 @@ const LandingPage = () => {
             <div className="mt-16 text-center">
               <div className="inline-block rounded-xl bg-slate-50 border border-slate-200 px-6 py-4 md:px-8 md:py-5">
                 <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
-                  Se você é treinador, assessoria ou negócio fitness, entra no grupo e acompanha nossos insights e bastidores
+                  Se você é treinador, assessoria ou negócio fitness, entre no nosso grupo exclusivo para ter acesso prioritário.
                 </p>
               </div>
             </div>
@@ -2238,7 +2238,7 @@ const LandingPage = () => {
             {/* CTA WhatsApp */}
             <div className="mt-8 text-center">
               <a
-                href="https://wa.me/5548988177698?text=Olá!%20Quero%20entrar%20no%20grupo%20do%20Grit%20Run"
+                href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-green-600 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-green-500/30 transition-all hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
@@ -2541,7 +2541,7 @@ const LandingPage = () => {
             <div className="text-center">
               <div className="mx-auto max-w-2xl rounded-3xl border-2 border-green-200/60 bg-gradient-to-br from-green-50 via-white to-sky-50/30 p-8 md:p-10 shadow-xl shadow-green-100/50">
                 <a
-                  href="https://wa.me/5548988177698?text=Olá!%20Quero%20participar%20da%20construção%20do%20Grit%20Run"
+                  href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-green-600 to-green-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-green-500/40 transition-all hover:-translate-y-0.5 hover:from-green-500 hover:to-green-600 hover:shadow-2xl hover:shadow-green-500/50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
