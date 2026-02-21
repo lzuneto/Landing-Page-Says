@@ -12,3 +12,4 @@ Coloque as seguintes imagens nesta pasta:
 As imagens serão exibidas automaticamente no carrossel da seção "Quem somos" na variantC.
 
 
+

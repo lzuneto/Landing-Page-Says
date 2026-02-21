@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 // ============================================
 // CONFIGURAÇÃO DE COPY - ESCOLHA A VARIANTE AQUI
 // ============================================
-const ACTIVE_VARIANT = 'variantC' as const;
+const ACTIVE_VARIANT = 'variantA' as const;
 type VariantKey = 'variantA' | 'variantB' | 'variantC';
 
 // ============================================
