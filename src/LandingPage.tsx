@@ -941,16 +941,26 @@ const LandingPage = () => {
     scrollToSection(sectionId);
   }, []);
 
-  // Dados do carrossel "Quem somos" - apenas para variantC
+  // Dados do carrossel "Quem somos" - ordem para mobile e desktop
   const quemSomosData = [
     {
-      image: '/quem-somos/correndo-rafa.jpg',
-      title: 'Corrida faz parte do nosso processo',
-      description: 'A gente não "atende" o nicho fitness de fora, a gente vive, testa e aprende nele todos os dias',
+      image: '/quem-somos/escritorio.jpg',
+      title: 'Cubo Itaú',
+      description: 'Estivemos ao longo da jornada presentes nos maiores centros de inovação do Brasil',
     },
     {
       image: '/quem-somos/rafa-meia-maratona.jpg',
       title: 'Meia maratona SC21K',
+    },
+    {
+      image: '/quem-somos/florianopolis.jpg',
+      title: 'Florianópolis como inspiração',
+      description: 'Criar tecnologia em um lugar que respira esporte (florianópolis) e vida saudável muda completamente o jeito de construir.',
+    },
+    {
+      image: '/quem-somos/correndo-rafa.jpg',
+      title: 'Corrida faz parte do nosso processo',
+      description: 'A gente não "atende" o nicho fitness de fora, a gente vive, testa e aprende nele todos os dias',
     },
     {
       image: '/quem-somos/mordendo-medalha.jpg',
@@ -958,18 +968,8 @@ const LandingPage = () => {
     },
     {
       image: '/quem-somos/plaquinha-100mil.jpg',
-      title: 'Placa de 6D - Comunidade Renato Asse',
+      title: 'Placa 6D',
       description: 'Antes do Grit Run, já construimos negócios digitais que escalam, auxiliando nossos clientes a alcançarem seus objetivos',
-    },
-    {
-      image: '/quem-somos/escritorio.jpg',
-      title: 'Cubo Itaú',
-      description: 'Estivemos ao longo da jornada presentes nos maiores centros de inovação do Brasil',
-    },
-    {
-      image: '/quem-somos/florianopolis.jpg',
-      title: 'Florianópolis como inspiração',
-      description: 'Criar tecnologia em um lugar que respira esporte (florianópolis) e vida saudável muda completamente o jeito de construir.',
     },
   ];
 
@@ -1465,7 +1465,7 @@ const LandingPage = () => {
                 Depoimento de clientes
               </h2>
               <p className="mx-auto max-w-2xl text-base text-slate-600 md:text-lg mt-4">
-                Veja o que quem já conheceu nossas plataformas tem a dizer sobre a experiência
+                O que dizem sobre nosso trabalho
               </p>
             </div>
 
