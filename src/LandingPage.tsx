@@ -1458,15 +1458,14 @@ const LandingPage = () => {
             {/* Galeria de fotos dos depoimentos - conteúdo completo visível (+25% maior) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8">
                 {[
+                  'teles-assessoria-esportiva.png',
                   '03FA79AF-C952-4E0F-8C4F-88CA643A9EDF-ff27c433-6f1b-4d27-8030-365273778113.png',
                   '3D0161C2-9BFB-4A33-ADC2-574FD2F6A83E_4_5005_c-15d13f6b-8601-4aa5-89b7-ddcfb1c61d8e.png',
                   '4F3B20B6-F8AE-4E10-B434-8A318687F5D0_4_5005_c-99734a75-8ecd-4851-a5ea-2e511ee537fb.png',
                   'AE2C3DD0-375A-4DEC-B585-F0610A10C4F4_4_5005_c-7c480b24-583e-43b0-8064-c77fe245d7c5.png',
                   '420B2D60-F9FF-49E6-9284-0BF22A88E12A_4_5005_c-a8120908-4783-4e3a-ba38-86c3df1a4b9c.png',
                   '954230CE-7870-45EC-8D0A-E5B870F8418F_4_5005_c-9bcb7f62-596a-4051-84e9-453b32356df8.png',
-                  'D768562D-1109-4229-AB31-884B98B0CE69-149fe663-a31e-46e1-b85e-cc3b30e0e3ef.png',
                   '0D3FE6E5-06E5-4BDD-AA1D-6AFEE75A5E21-a7b0817c-7df5-4f98-9b7d-8bfe69b2ffc6.png',
-                  'teles-assessoria-esportiva.png',
                   '06E91393-A237-4956-ABA4-5119D2FA7239-6879b1b2-6d74-4f88-b009-919cfa01e5f5.png',
                 ].map((filename) => (
                   <div
@@ -2190,7 +2189,7 @@ const LandingPage = () => {
                         1
                       </div>
                       <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
-                        Somos uma empresa de desenvolvimento de software que cansou de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
+                        Somos desenvolvedores de desenvolvimento de software que cansou de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
                       </p>
                     </div>
                   </div>
