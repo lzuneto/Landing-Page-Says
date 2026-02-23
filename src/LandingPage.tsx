@@ -2189,7 +2189,7 @@ const LandingPage = () => {
                         1
                       </div>
                       <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
-                        Somos desenvolvedores de desenvolvimento de software que cansou de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
+                        Somos desenvolvedores que cansaram de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
                       </p>
                     </div>
                   </div>
