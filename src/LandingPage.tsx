@@ -1055,7 +1055,7 @@ const LandingPage = () => {
           </nav>
           {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
             <a
-              href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
+              href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-200 transition hover:-translate-y-px hover:bg-green-500"
@@ -1216,7 +1216,7 @@ const LandingPage = () => {
               {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
                 <div className={`flex flex-col gap-4 sm:flex-row ${ACTIVE_VARIANT === 'variantA' ? 'w-full justify-center' : ''}`}>
                   <a
-                    href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
+                    href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold ${ACTIVE_VARIANT === 'variantA' ? 'rounded-xl flex-1 max-w-md mx-auto w-full px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]' : 'rounded-full flex-1 px-6 py-3 text-center text-base'}`}
@@ -2529,7 +2529,7 @@ const LandingPage = () => {
                 </p>
               )}
               <a
-                href="https://chat.whatsapp.com/GkjlijhfUwPIhaIAOMxB1g"
+                href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold w-full max-w-md mx-auto px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]`}
@@ -2610,7 +2610,7 @@ const LandingPage = () => {
                   <span className="break-all">{copy.footer.email}</span>
                 </a>
                 <a
-                  href="https://wa.me/5548988177698"
+                  href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2.5 text-sm text-slate-600 transition hover:text-sky-600"
