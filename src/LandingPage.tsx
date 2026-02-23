@@ -941,7 +941,7 @@ const LandingPage = () => {
     scrollToSection(sectionId);
   }, []);
 
-  // Dados do carrossel "Quem somos" - ordem para mobile e desktop
+  // Dados do carrossel "Quem somos" - ordem para mobile e desktop (3 imagens)
   const quemSomosData = [
     {
       image: '/quem-somos/escritorio.jpg',
@@ -956,20 +956,6 @@ const LandingPage = () => {
       image: '/quem-somos/florianopolis.jpg',
       title: 'Florianópolis como inspiração',
       description: 'Criar tecnologia em um lugar que respira esporte (florianópolis) e vida saudável muda completamente o jeito de construir.',
-    },
-    {
-      image: '/quem-somos/correndo-rafa.jpg',
-      title: 'Corrida faz parte do nosso processo',
-      description: 'A gente não "atende" o nicho fitness de fora, a gente vive, testa e aprende nele todos os dias',
-    },
-    {
-      image: '/quem-somos/mordendo-medalha.jpg',
-      title: 'Meia maratona internacional Oakberry',
-    },
-    {
-      image: '/quem-somos/plaquinha-100mil.jpg',
-      title: 'Placa 6D',
-      description: 'Antes do Grit Run, já construimos negócios digitais que escalam, auxiliando nossos clientes a alcançarem seus objetivos',
     },
   ];
 
@@ -2264,7 +2250,6 @@ const LandingPage = () => {
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={index === 3 ? { objectPosition: 'center bottom' } : {}}
                         loading="lazy"
                         onError={() => {
                           setImageErrors((prev) => ({ ...prev, [index]: true }));
