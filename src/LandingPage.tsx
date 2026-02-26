@@ -3,8 +3,8 @@ import { useCallback, useState } from 'react';
 // ============================================
 // CONFIGURAÇÃO DE COPY - ESCOLHA A VARIANTE AQUI
 // ============================================
-const ACTIVE_VARIANT = 'variantA' as const;
-type VariantKey = 'variantA' | 'variantB' | 'variantC';
+const ACTIVE_VARIANT = 'variantD' as const;
+type VariantKey = 'variantA' | 'variantB' | 'variantC' | 'variantD';
 
 // ============================================
 // TIPOS
@@ -183,7 +183,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       title: 'Entre no Grupo VIP, Receba Oferta Exclusiva do Clube de Embaixadores GritRun e Finalmente Alcance a Escala Com Assessoria de Corrida',
       subtitle: 'Mais de 13 milhões de brasileiros correm, mas um treinador que usa planilhas não consegue escalar. Você não precisa trabalhar mais horas para ganhar mais como treinador de corrida. O Grit Run organiza sua operação e cria uma comunidade engajada para que sua assessoria cresça sem depender exclusivamente do seu tempo.',
       subtitleItalic: '',
-      ctaPrimary: 'Começar',
+      ctaPrimary: 'Quero acessar a plataforma',
       ctaSecondary: 'Ver como funciona',
       stats: [
   //      { label: 'Treinos realizados', value: '2.400+' },
@@ -437,7 +437,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       title: 'Do zero aos 5KM em 8 semanas.',
       subtitle: 'Receba o suporte que você precisa como corredor com planos de corrida personalizados para atingir seus objetivos — desde treinar para seu 5K mais rápido até completar sua primeira maratona.',
       subtitleItalic: 'A forma moderna de treinar corrida.',
-      ctaPrimary: 'Começar',
+      ctaPrimary: 'Quero acessar a plataforma',
       ctaSecondary: 'Ver como funciona',
       stats: [
         { label: 'Treinos realizados', value: '2.400+' },
@@ -683,7 +683,7 @@ const copyVariants: Record<VariantKey, CopyData> = {
       title: 'Torne-se o dono de uma assessoria com centenas de alunos ativos, sem precisar trabalhar mais horas.',
       subtitle: 'Mais de 13 milhões de brasileiros correm, mas um treinador que usa planilhas não consegue escalar. Você não precisa trabalhar mais horas para ganhar mais como treinador de corrida. O Grit Run organiza sua operação e cria uma comunidade engajada para que sua assessoria cresça sem depender exclusivamente do seu tempo.',
       subtitleItalic: '',
-      ctaPrimary: 'Começar',
+      ctaPrimary: 'Quero acessar a plataforma',
       ctaSecondary: 'Ver como funciona',
       stats: [
   //      { label: 'Treinos realizados', value: '2.400+' },
@@ -919,6 +919,157 @@ const copyVariants: Record<VariantKey, CopyData> = {
       whatsapp: '+55 48 98817-7698',
     },
   },
+  // variantD: cópia da variantA para edição independente
+  variantD: {
+    header: {
+      logo: 'Grit Run',
+      nav: {
+        benefits: 'Benefícios',
+        testimonials: 'Depoimentos',
+        howItWorks: 'Como funciona',
+        plans: 'Planos',
+        faq: 'FAQ',
+      },
+      cta: 'Começar grátis',
+    },
+    hero: {
+      badge: 'plataforma para treinadores de corrida',
+      title: 'Sua assessoria de corrida patina e não escala?',
+      subtitle: 'Estamos selecionando assessores para testar a nova plataforma criada exclusivamente para treinadores de corrida.',
+      subtitleItalic: '',
+      ctaPrimary: 'Quero acessar a plataforma',
+      ctaSecondary: 'Ver como funciona',
+      stats: [],
+    },
+    dashboard: {
+      title: 'Seu plano da semana',
+      weekRange: 'Semana 17-23 Nov',
+      levelLabel: 'Seu nível',
+      weeklyProgressLabel: 'Progresso semanal',
+      kmThisWeekLabel: 'Km esta semana',
+      todayWorkoutLabel: 'Treino de hoje',
+      todayWorkoutType: 'Corrida contínua',
+      todayWorkoutDetails: '4 km • Intensidade leve',
+      todayWorkoutCta: 'Começar',
+      challengesLabel: 'Desafios da semana',
+      upcomingDaysLabel: 'Próximos dias',
+    },
+    painSection: {
+      title: 'Se hoje você:',
+      subtitle: '',
+      statements: [
+        { emoji: '📱', text: 'Envia treinos pelo WhatsApp' },
+        { emoji: '📋', text: 'Usa planilhas para organizar alunos' },
+        { emoji: '📈', text: 'Quer crescer mas sente falta de estrutura' },
+        { emoji: '👋', text: 'Perde alunos por falta de acompanhamento mais profissional' },
+      ],
+      conclusion: '',
+      conclusionBold: 'Nosso aplicativo foi criado para você.',
+    },
+    experienceSection: {
+      badge: '',
+      titleLine1: 'O problema nunca foi você…',
+      titleLine2: 'Na faculdade  ninguém te ensinou como criar um modelo de carreira escalável e rentável.',
+      subtitle: '',
+      intro: 'Isso acontece porque:',
+      problems: [
+        'Você monta treinos manualmente para cada aluno e vira refém da própria agenda.',
+        'Você tenta aumentar o número de alunos, mas a operação não se sustenta ao passar das poucas dezenas.',
+        'Você usa planilhas, WhatsApp e ferramentas improvisadas que não foram feitas para escalar uma assessoria.',
+        'Você trabalha cada vez mais achando que vai ganhar mais, mas só se desgasta e perde o controle da operação.',
+      ],
+      conclusion: 'O que faltava era um caminho claro para te levar até lá.',
+      conclusionBold: 'E é exatamente isso que você vai ter agora…',
+      cta: 'Começar',
+    },
+    howItWorks: {
+      badge: 'Como funciona',
+      title: 'Como funciona o sistema Grit Run™',
+      subtitle: 'Em cinco passos, o Grit Run organiza sua operação, centraliza o acompanhamento dos alunos e cria a base para uma assessoria escalável.',
+      steps: [
+        { title: 'Você estrutura sua assessoria', description: 'Define metodologia, tipos de treino, perfis de alunos e critérios de evolução.' },
+        { title: 'O sistema organiza e acelera a criação dos treinos', description: 'Modelos reutilizáveis e estrutura clara para montar planos personalizados em menos tempo.' },
+        { title: 'Menos mensagens soltas, mais clareza para decidir', description: 'Os feedbacks dos alunos ficam organizados em um único lugar, facilitando o acompanhamento e reduzindo retrabalho.' },
+        { title: 'Você acompanha a evolução da assessoria como um todo', description: 'Execução dos treinos, constância dos alunos, engajamento e visão geral da operação em um único painel.' },
+        { title: 'Resultado', description: 'Uma assessoria mais organizada, alunos mais engajados e um negócio que cresce sem depender exclusivamente do seu tempo.' },
+      ],
+      swipeHint: 'Arraste para o lado para ver todas as etapas →',
+    },
+    benefits: {
+      badge: 'O que estamos construindo',
+      title: 'A forma moderna de gerir sua assessoria de corrida.',
+      subtitle: 'Você lidera a metodologia. O Grit Run organiza a operação e fortalece o engajamento dos alunos.',
+      features: [
+        { title: 'Comunidade que aumenta a retenção', description: 'Desafios, rankings e dinâmicas internas fortalecem o senso de pertencimento e fazem os alunos se engajarem entre si.' },
+        { title: 'Estrutura clara para criação de treinos', description: 'Crie treinos com base na sua metodologia, objetivos dos alunos, níveis e disponibilidade, sem começar do zero toda vez.' },
+        { title: 'Menos retrabalho no dia a dia', description: 'Centralize planos, feedbacks e histórico dos alunos em um único lugar, reduzindo mensagens soltas e decisões no improviso.' },
+        { title: 'Organização que respeita sua rotina', description: 'Tenha controle do cronograma de treinos e entregas sem depender exclusivamente da sua presença constante.' },
+        { title: 'Visão completa da assessoria', description: 'Acompanhe execução dos treinos, constância, engajamento dos alunos e evolução geral da operação em um único painel.' },
+        { title: 'Negócio preparado para escalar', description: 'Transforme uma operação limitada a poucas dezenas de alunos em uma assessoria organizada, valorizada e pronta para crescer.' },
+      ],
+    },
+    resultsProof: {
+      badge: 'Resultados reais',
+      title: 'Se outros treinadores Conseguiram, Você Também Pode!',
+      intro: 'Dados reais mostram que assessorias que utilizam tecnologia conseguem escalar e aumentar a satisfação dos alunos.',
+      dataTitle: 'Dados que provam isso:',
+      dataPoints: [
+        '70% dos personal trainers gastam mais de 5 horas por semana em tarefas administrativas.',
+        'A retenção de alunos aumenta em mais de 30% ao utilizar desafios, rankings e comunidades como estratégias de engajamento.',
+        'A satisfação dos aunos atinge 30% a mais nas assessorias esportivas que utilizam soluções digitais, como aplicativos.',
+      ],
+      conclusion: 'Você pode ser o próximo! Basta usar o aplicativo e comprovar que a tecnologia funciona para escalar sua assessoria.',
+    },
+    testimonials: {
+      badge: 'Depoimentos',
+      title: 'Corredores de todos os níveis já confiam na plataforma.',
+      subtitle: 'Veja o que quem usa o Grit Run tem a dizer sobre a experiência.',
+      testimonials: [
+        { content: 'O aplicativo se tornou minha maior aliado na corrida. A plataforma traduz meu desempenho em treinos realmente inteligentes — e os resultados aparecem. Para quem corre longas distâncias como eu, é uma vantagem enorme.', author: 'Inácio Nogueira', role: 'Maratonista' },
+        { content: 'A plataforma é essencial para qualquer pessoa correr melhor. Ela orienta, ajusta e guia — desde iniciantes até quem já corre distâncias maiores. Facilita muito a evolução com segurança.', author: 'Rafael Soccol', role: 'Corredor de Meia Maratona – Florianópolis' },
+        { content: 'Comecei a correr há pouco tempo e já vi meu ritmo melhorar rapidamente. A plataforma se adapta ao meu preparo e me dá confiança para continuar. Nunca imaginei evoluir tão rápido.', author: 'Elizeu Neto', role: 'Corredor Iniciante' },
+      ],
+    },
+    pricingAnchor: {
+      title: 'Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.',
+      subtitle: 'Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.',
+      intro: 'Mas você não precisa pagar esse valor para ter:',
+      benefits: ['Personalização', 'Ajustes automáticos', 'Acompanhamento inteligente', 'Metodologia profissional'],
+    },
+    plans: {
+      badge: 'Planos',
+      title: 'Escolha seu plano!',
+      subtitle: 'Todos incluem suporte, atualizações contínuas e acesso seguro.',
+      plans: [
+        { name: 'MENSAL', description: 'Para treinadores que querem organizar a assessoria e ganhar escala.', price: 'R$ 89,90 / mês', cta: 'Assinar Mensal', highlight: true, paymentLink: 'https://www.asaas.com/c/zts26bonzs3uwjef', features: ['Gestão estruturada de treinos e alunos', 'Criação e organização de planos com base na sua metodologia', 'Centralização de feedbacks e histórico dos alunos', 'Visão geral da assessoria em um único painel', 'Base para engajamento e retenção dos alunos'] },
+        { name: 'ANUAL', description: '(cobrado uma vez por ano)', price: 'R$ 69,90 / mês', cta: 'Assinar Anual', paymentLink: 'https://www.asaas.com/c/mvlqe3ca71dbpwli', features: ['Todos os recursos do plano Mensal', 'Acesso contínuo a novas funcionalidades', 'Prioridade em recursos de engajamento (desafios, rankings e comunidade)', 'Economia de R$ 240 por ano', 'Pagamento único, sem reajustes durante o período'] },
+      ],
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Perguntas frequentes',
+      subtitle: 'Tire suas dúvidas antes de estruturar sua assessoria com o Grit Run.',
+      faqs: [
+        { question: 'Preciso ter muita experiência como treinador para usar o Grit Run?', answer: 'Não. O Grit Run foi criado para atender treinadores em diferentes estágios — desde quem está estruturando a primeira assessoria até quem já gerencia dezenas ou centenas de alunos. A plataforma se adapta à sua metodologia e ao seu momento de crescimento.' },
+        { question: 'O Grit Run substitui minha metodologia de treino?', answer: 'Não. O Grit Run não impõe uma metodologia. Ele organiza, centraliza e dá escala à forma como você já trabalha, respeitando seu modelo de treino, critérios e tomada de decisão.' },
+        { question: 'Como funciona o cancelamento?', answer: 'Você pode cancelar a qualquer momento. Não há fidelidade nem multa por cancelamento. O acesso permanece ativo até o final do período já pago.' },
+        { question: 'O pagamento é seguro?', answer: 'Sim. Trabalhamos com plataformas de pagamento confiáveis e amplamente utilizadas no Brasil. Todos os dados são protegidos com criptografia, garantindo uma transação segura.' },
+        { question: 'Como vou acessar a plataforma?', answer: 'O acesso é imediato. Assim que o pagamento for aprovado, você recebe um e-mail com as instruções para acessar o painel do treinador e começar a estruturar sua assessoria.' },
+        { question: 'Existe período de teste ou garantia?', answer: 'Sim. Você tem 7 dias para testar o plano pago sem risco. Se dentro desse período entender que o Grit Run não faz sentido para sua operação, basta solicitar o reembolso e devolvemos 100% do valor, sem burocracia.' },
+        { question: 'O Grit Run é indicado para assessorias maiores?', answer: 'Sim. A plataforma foi pensada justamente para resolver os gargalos de crescimento, organização e retenção que surgem quando a assessoria começa a escalar.' },
+      ],
+    },
+    footer: {
+      copyright: `Copyright © ${new Date().getFullYear()} Grit Softwares`,
+      allRightsReserved: 'Todos os Direitos Reservados',
+      companyName: 'Grit Soluções em Tecnologia LTDA',
+      cnpj: 'CNPJ: 55.952.316/0001-75',
+      address: 'Endereço: Rua Santa Luzia, 100, Sala 604, Trindade, Florianópolis/SC – Brasil',
+      supportTitle: 'Ficou com alguma dúvida?',
+      email: 'contato@gritsoftwares.com.br',
+      whatsapp: '+55 48 98817-7698',
+    },
+  },
 };
 
 // Seleciona a variante ativa
@@ -930,6 +1081,28 @@ const scrollToSection = (sectionId: string) => {
     element.scrollIntoView({ behavior: 'smooth' });
   }
 };
+
+/** Rolagem suave de uma viewport (mobile: incentiva continuar vendo a página) */
+const scrollNextViewport = () => {
+  window.scrollTo({ top: window.scrollY + window.innerHeight * 0.9, behavior: 'smooth' });
+};
+
+/** Indicador de scroll – incentiva o usuário a rolar (foco mobile / lançamento) */
+const ScrollHint = ({ className = '' }: { className?: string }) => (
+  <button
+    type="button"
+    onClick={scrollNextViewport}
+    className={`flex flex-col items-center gap-2 min-h-[44px] min-w-[44px] justify-center text-sky-600/90 hover:text-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 rounded-full p-3 md:p-2 transition-opacity hover:opacity-100 active:scale-95 touch-manipulation ${className}`}
+    aria-label="Ver mais conteúdo abaixo"
+  >
+    <span className="text-xs font-semibold uppercase tracking-wider md:text-sm">Role para ver mais</span>
+    <span className="animate-bounce text-sky-500" aria-hidden>
+      <svg className="w-7 h-7 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </span>
+  </button>
+);
 
 const LandingPage = () => {
   const [veloImageError, setVeloImageError] = useState(false);
@@ -996,7 +1169,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* Header - oculto na variantA */}
-      {ACTIVE_VARIANT !== 'variantA' && (
+      {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantD' && (
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a
@@ -1010,7 +1183,7 @@ const LandingPage = () => {
             {copy.header.logo}
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-            {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
+            {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
               <>
                 {[
                   { label: copy.header.nav.benefits, id: 'benefits' },
@@ -1053,7 +1226,7 @@ const LandingPage = () => {
               </>
             )}
           </nav>
-          {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
+          {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
             <a
               href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
               target="_blank"
@@ -1082,13 +1255,13 @@ const LandingPage = () => {
         {/* Hero */}
         <section
           id="hero"
-          className={`relative overflow-hidden ${ACTIVE_VARIANT === 'variantA' ? 'bg-gradient-to-br from-sky-50 via-white to-sky-50' : (ACTIVE_VARIANT === 'variantC') ? 'bg-gradient-to-br from-sky-50 via-white to-green-50' : 'bg-gradient-to-b from-sky-50 via-white to-white'}`}
+          className={`relative overflow-hidden ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'bg-gradient-to-br from-sky-50 via-white to-sky-50' : (ACTIVE_VARIANT === 'variantC') ? 'bg-gradient-to-br from-sky-50 via-white to-green-50' : 'bg-gradient-to-b from-sky-50 via-white to-white'}`}
         >
           {/* Elementos decorativos visuais - variantA: apenas azul; variantC: sky + green */}
-          {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') && (
+          {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') && (
             <>
               {/* Círculos decorativos grandes */}
-              {ACTIVE_VARIANT === 'variantA' ? (
+              {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? (
                 <>
                   <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-sky-200/30 to-sky-300/20 rounded-full blur-3xl" />
                   <div className="absolute top-1/2 -left-24 w-72 h-72 bg-gradient-to-br from-sky-300/25 to-sky-200/20 rounded-full blur-3xl" />
@@ -1103,10 +1276,10 @@ const LandingPage = () => {
               )}
               {/* Linhas decorativas */}
               <div className="absolute top-20 left-1/4 w-px h-32 bg-gradient-to-b from-transparent via-sky-300/40 to-transparent" />
-              <div className={`absolute bottom-32 right-1/3 w-px h-40 bg-gradient-to-b from-transparent ${ACTIVE_VARIANT === 'variantA' ? 'via-sky-300/40' : 'via-green-300/40'} to-transparent`} />
+              <div className={`absolute bottom-32 right-1/3 w-px h-40 bg-gradient-to-b from-transparent ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'via-sky-300/40' : 'via-green-300/40'} to-transparent`} />
               {/* Formas geométricas pequenas */}
               <div className="absolute top-40 right-20 w-3 h-3 bg-sky-400/40 rounded-full animate-pulse" />
-              <div className={`absolute top-60 right-40 w-2 h-2 ${ACTIVE_VARIANT === 'variantA' ? 'bg-sky-400/50' : 'bg-green-400/50'} rounded-full animate-pulse delay-300`} />
+              <div className={`absolute top-60 right-40 w-2 h-2 ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'bg-sky-400/50' : 'bg-green-400/50'} rounded-full animate-pulse delay-300`} />
               <div className="absolute bottom-40 left-32 w-2.5 h-2.5 bg-sky-500/40 rounded-full animate-pulse delay-700" />
               {/* Padrão de grid sutil */}
               <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -1143,17 +1316,24 @@ const LandingPage = () => {
             )}
           </div>
           
-          <div className={`mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:items-center lg:py-28 relative z-10 ${ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' ? 'lg:grid-cols-2' : ''}`}>
-            <div className={ACTIVE_VARIANT === 'variantA' ? 'flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto space-y-10 md:space-y-12' : 'space-y-8'}>
-              <div className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wide ${ACTIVE_VARIANT === 'variantA' ? 'rounded-xl bg-gradient-to-r from-sky-100 to-sky-200 text-sky-700 border border-sky-200/50 shadow-sm' : (ACTIVE_VARIANT === 'variantC') ? 'rounded-full bg-gradient-to-r from-sky-100 to-green-100 text-sky-700 border border-sky-200/50 shadow-sm' : 'rounded-full bg-sky-100 text-sky-700'} ${ACTIVE_VARIANT === 'variantA' ? 'justify-center' : ''}`}>
-                {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') && (
+          <div className={`mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:items-center lg:py-28 relative z-10 ${ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' ? 'lg:grid-cols-2' : ''}`}>
+            <div className={(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto space-y-10 md:space-y-12' : 'space-y-8'}>
+              <div className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wide ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'rounded-xl bg-gradient-to-r from-sky-100 to-sky-200 text-sky-700 border border-sky-200/50 shadow-sm' : (ACTIVE_VARIANT === 'variantC') ? 'rounded-full bg-gradient-to-r from-sky-100 to-green-100 text-sky-700 border border-sky-200/50 shadow-sm' : 'rounded-full bg-sky-100 text-sky-700'} ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'justify-center' : ''}`}>
+                {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') && (
                   <span className="text-base">🚀</span>
                 )}
                 {copy.hero.badge}
               </div>
-              <div className={`space-y-6 ${ACTIVE_VARIANT === 'variantA' ? 'w-full' : ''}`}>
-                <h1 className={`leading-tight ${ACTIVE_VARIANT === 'variantA' ? 'text-4xl font-normal md:text-5xl lg:text-6xl text-slate-700 drop-shadow-sm md:leading-[1.12] tracking-tight' : (ACTIVE_VARIANT === 'variantC') ? 'text-4xl font-semibold md:text-5xl bg-gradient-to-r from-slate-900 via-sky-800 to-slate-900 bg-clip-text text-transparent' : 'text-4xl font-semibold md:text-5xl text-slate-900'}`}>
-                  {ACTIVE_VARIANT === 'variantA' ? (
+              <div className={`space-y-6 ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'w-full' : ''}`}>
+                <h1 className={`leading-tight ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'text-4xl font-normal md:text-5xl lg:text-6xl text-slate-700 drop-shadow-sm md:leading-[1.12] tracking-tight' : (ACTIVE_VARIANT === 'variantC') ? 'text-4xl font-semibold md:text-5xl bg-gradient-to-r from-slate-900 via-sky-800 to-slate-900 bg-clip-text text-transparent' : 'text-4xl font-semibold md:text-5xl text-slate-900'}`}>
+                  {ACTIVE_VARIANT === 'variantD' ? (
+                    <>
+                      Sua assessoria de corrida{' '}
+                      <span className="font-semibold bg-gradient-to-r from-sky-700 to-sky-800 bg-clip-text text-transparent">patina</span>
+                      {' '}e{' '}
+                      <span className="font-semibold text-amber-600">não escala?</span>
+                    </>
+                  ) : (ACTIVE_VARIANT === 'variantA') ? (
                     <>
                       Entre no Grupo VIP,{' '}
                       <span className="font-semibold bg-gradient-to-r from-sky-700 to-sky-800 bg-clip-text text-transparent">Receba Oferta Exclusiva do </span>
@@ -1167,12 +1347,17 @@ const LandingPage = () => {
                     copy.hero.title
                   )}
                 </h1>
+                {ACTIVE_VARIANT === 'variantD' && (
+                  <p className="text-base font-medium text-slate-700 md:text-lg leading-relaxed drop-shadow-sm">
+                    {copy.hero.subtitle}
+                  </p>
+                )}
                 {ACTIVE_VARIANT === 'variantA' && (
                   <p className="text-sm text-black md:text-base">
                     Tenha uma plataforma personalizada para sua assessoria
                   </p>
                 )}
-                {ACTIVE_VARIANT === 'variantA' ? null : (ACTIVE_VARIANT === 'variantC' ? (
+                {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? null : (ACTIVE_VARIANT === 'variantC' ? (
                   <div className="space-y-6">
                     <p className="text-base text-slate-600 md:text-lg leading-relaxed">
                       Mais de 13 milhões de brasileiros correm, mas um treinador que usa planilhas não consegue escalar.
@@ -1213,18 +1398,18 @@ const LandingPage = () => {
                   </>
                 ))}
               </div>
-              {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
-                <div className={`flex flex-col gap-4 sm:flex-row ${ACTIVE_VARIANT === 'variantA' ? 'w-full justify-center' : ''}`}>
+              {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
+                <div className={`flex flex-col gap-4 sm:flex-row ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'w-full justify-center' : ''}`}>
                   <a
                     href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold ${ACTIVE_VARIANT === 'variantA' ? 'rounded-xl flex-1 max-w-md mx-auto w-full px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]' : 'rounded-full flex-1 px-6 py-3 text-center text-base'}`}
+                    className={`bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'rounded-xl flex-1 max-w-md mx-auto w-full px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]' : 'rounded-full flex-1 px-6 py-3 text-center text-base'}`}
                   >
-                    <svg className={ACTIVE_VARIANT === 'variantA' ? 'w-6 h-6 flex-shrink-0' : 'w-5 h-5'} fill="currentColor" viewBox="0 0 24 24">
+                    <svg className={(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'w-6 h-6 flex-shrink-0' : 'w-5 h-5'} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                     </svg>
-                    {ACTIVE_VARIANT === 'variantA' ? 'Sim, Eu Quero Receber Oportunidade' : 'Quero ter acesso'}
+                    {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? copy.hero.ctaPrimary : 'Quero ter acesso'}
                   </a>
                 </div>
               ) : (
@@ -1245,6 +1430,15 @@ const LandingPage = () => {
                   </button>
                 </div>
               )}
+              {ACTIVE_VARIANT === 'variantD' && (
+                <div className="mt-12 w-full max-w-2xl mx-auto flex justify-center">
+                  <img
+                    src="/Computer.svg"
+                    alt="Plataforma no computador para assessores de corrida"
+                    className="w-full max-h-[320px] sm:max-h-[380px] md:max-h-[420px] object-contain object-center drop-shadow-2xl"
+                  />
+                </div>
+              )}
               <div className="flex flex-wrap gap-8 text-sm text-slate-500">
                 {copy.hero.stats.map((stat) => (
                   <div key={stat.label}>
@@ -1256,7 +1450,7 @@ const LandingPage = () => {
                 ))}
               </div>
             </div>
-            {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+            {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
             <div className="relative">
               <div className="absolute -left-10 top-6 h-40 w-40 rounded-full bg-sky-200 blur-3xl" />
               <div className="absolute right-0 -bottom-10 h-40 w-40 rounded-full bg-slate-200 blur-3xl" />
@@ -1440,10 +1634,149 @@ const LandingPage = () => {
             </div>
             )}
           </div>
-          
+
+          {/* Variant D – Indicador de scroll (mobile: incentiva rolar e ver mais seções) */}
+          {ACTIVE_VARIANT === 'variantD' && (
+            <div className="flex justify-center pt-6 pb-2 md:pt-8 md:pb-4">
+              <ScrollHint className="opacity-90" />
+            </div>
+          )}
         </section>
 
-        {/* Depoimentos – logo abaixo do hero */}
+        {/* Variant D – Zona de identificação (acima dos depoimentos, paleta sky/amber) */}
+        {ACTIVE_VARIANT === 'variantD' && (
+          <section id="identificacao" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
+              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
+              <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
+            </div>
+            <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                  {copy.painSection.title}
+                </h2>
+                {copy.painSection.subtitle ? (
+                  <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
+                    {copy.painSection.subtitle}
+                  </p>
+                ) : null}
+              </div>
+              <div className="mt-20">
+                <div className="mx-auto max-w-5xl">
+                  <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
+                    {copy.painSection.statements.map((item) => (
+                      <div
+                        key={item.text}
+                        className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative flex items-start gap-6">
+                          <div className="flex shrink-0 items-center justify-center">
+                            <div className="relative">
+                              <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
+                              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
+                                <span className="text-2xl">{item.emoji}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex-1 pt-1">
+                            <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
+                              {item.text}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-16">
+                <div className="mx-auto max-w-4xl">
+                  <div className="rounded-3xl border-2 border-sky-200/70 bg-gradient-to-br from-sky-50 via-white to-amber-50/20 p-10 text-center shadow-xl shadow-sky-200/20 backdrop-blur-sm">
+                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/30">
+                      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    {copy.painSection.conclusion ? (
+                      <p className="text-xl font-semibold leading-relaxed text-slate-900 md:text-2xl">
+                        {copy.painSection.conclusion}
+                      </p>
+                    ) : null}
+                    <p className="mt-4 text-2xl font-bold leading-relaxed text-sky-700 md:text-3xl">
+                      {copy.painSection.conclusionBold}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center pt-8 pb-4">
+                <ScrollHint className="opacity-90" />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Variant D – O que oferecemos (proporcional às demais seções) */}
+        {ACTIVE_VARIANT === 'variantD' && (
+          <section id="plataforma-para-quem-quer" className="relative overflow-hidden bg-gradient-to-b from-amber-50/40 via-white to-sky-50/60">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-amber-50/50 blur-3xl" />
+              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
+              <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
+            </div>
+            <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                  Uma plataforma pensada exclusivamente para assessores que querem:
+                </h2>
+              </div>
+              <div className="mt-20">
+                <div className="mx-auto max-w-5xl">
+                  <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
+                    {[
+                      'Organizar alunos em um só lugar',
+                      'Profissionalizar a entrega',
+                      'Aumentar retenção',
+                      'Estruturar mensalidades recorrentes',
+                      'Crescer com mais previsibilidade',
+                    ].map((text) => (
+                      <div
+                        key={text}
+                        className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative flex items-start gap-6">
+                          <div className="flex shrink-0 items-center justify-center">
+                            <div className="relative">
+                              <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
+                              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
+                                <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex-1 pt-1">
+                            <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
+                              {text}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center pt-8 pb-4">
+                <ScrollHint className="opacity-90" />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Depoimentos – oculto na variant D */}
+        {ACTIVE_VARIANT !== 'variantD' && (
         <section id="depoimentos" className="bg-white">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
             <div className="space-y-4 text-center mb-12">
@@ -1482,12 +1815,13 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* Renderização condicional: variantC mostram dores comuns; variantA oculta */}
-        {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
+        {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
           <>
-            {/* Bloco 03 – Dores comuns (oculto na variantA) */}
-            {ACTIVE_VARIANT !== 'variantA' && (
+            {/* Bloco 03 – Dores comuns (variant B e C; variant D tem seção própria acima dos depoimentos) */}
+            {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantD' && (
             <section id="dor-latente-cards" className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
               {/* Decorative background elements */}
               <div className="absolute inset-0 overflow-hidden">
@@ -1577,7 +1911,7 @@ const LandingPage = () => {
             )}
 
             {/* Resultados Reais */}
-            {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+            {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
             <section id="results-proof" className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
           {/* Decorative background elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -1913,7 +2247,7 @@ const LandingPage = () => {
         )}
 
         {/* Bloco 04 – Texto focal */}
-        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
         <section className="bg-slate-900 text-white">
           <div className="mx-auto max-w-5xl px-6 py-20 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-sky-300">
@@ -1969,7 +2303,7 @@ const LandingPage = () => {
         )}
 
         {/* Como funciona */}
-        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
         <section id="steps" className="bg-slate-50">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="md:flex md:items-end md:justify-between">
@@ -2038,11 +2372,11 @@ const LandingPage = () => {
         )}
 
         {/* Benefícios (oculto na variantA) */}
-        {ACTIVE_VARIANT !== 'variantA' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantD' && (
         <section id="benefits" className="bg-white">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="space-y-4 text-center">
-              {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
+              {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
                 <>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
                     {copy.benefits.badge}
@@ -2066,7 +2400,7 @@ const LandingPage = () => {
               )}
             </div>
             
-            {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') ? (
+            {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') ? (
               <div className="mt-16 space-y-8 md:space-y-12">
                 {/* Card 1: Comunidade que retém alunos automaticamente */}
                 <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-sky-50/30 p-8 md:p-10 shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-sky-300">
@@ -2162,8 +2496,82 @@ const LandingPage = () => {
         </section>
         )}
 
+        {/* Cópia Acesso Antecipado – acima de Quem somos (proporcional às demais seções) */}
+        {ACTIVE_VARIANT === 'variantD' && (
+        <section id="acesso-antecipado-top" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
+            <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
+            <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 rounded-full bg-sky-100/90 px-4 py-2 backdrop-blur-sm border border-sky-200/60">
+                <span className="text-base">🚀</span>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
+                  Acesso Antecipado
+                </p>
+              </div>
+              <h2 className="mt-6 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                Os primeiros assessores terão:
+              </h2>
+            </div>
+            <div className="mt-20">
+              <div className="mx-auto max-w-5xl">
+                <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
+                  {[
+                    { emoji: '🚀', text: 'Condição especial de lançamento' },
+                    { emoji: '📈', text: 'Participação na evolução da plataforma' },
+                    { emoji: '👑', text: 'Benefícios exclusivos para embaixadores' },
+                  ].map((item) => (
+                    <div
+                      key={item.text}
+                      className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <div className="relative flex items-start gap-6">
+                        <div className="flex shrink-0 items-center justify-center">
+                          <div className="relative">
+                            <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
+                            <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
+                              <span className="text-2xl">{item.emoji}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex-1 pt-1">
+                          <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
+                            {item.text}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p className="mt-12 text-center text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+              Estamos formando um grupo fechado para apresentar os detalhes.
+            </p>
+            <div className="mt-10 flex justify-center">
+              <a
+                href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-4 text-lg min-h-[56px] active:scale-[0.98] w-full max-w-md"
+              >
+                <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Quero acessar a plataforma
+              </a>
+            </div>
+          </div>
+        </section>
+        )}
+
         {/* Quem somos - Grid - apenas variantC */}
-        {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') && (
+        {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') && (
         <section id="quem-somos" className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
             {/* Header */}
@@ -2322,7 +2730,7 @@ const LandingPage = () => {
         </section>
 
         {/* Ancoragem com Preço */}
-        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -2441,7 +2849,7 @@ const LandingPage = () => {
         )}
 
         {/* Planos */}
-        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
         <section id="plans" className="bg-slate-50">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="space-y-4 text-center">
@@ -2499,8 +2907,34 @@ const LandingPage = () => {
         </section>
         )}
 
-        {/* CTA final - semelhante ao hero (variantA e variantC) */}
-        {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') && (
+        {/* CTA final – variant D: apenas texto + botão */}
+        {ACTIVE_VARIANT === 'variantD' && (
+        <section id="construcao" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
+            <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-2xl px-6 py-20 md:py-24">
+            <div className="flex flex-col items-center text-center space-y-8">
+              <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                Estamos formando um grupo fechado para apresentar os detalhes.
+              </p>
+              <a
+                href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-4 text-lg min-h-[56px] active:scale-[0.98] w-full max-w-md"
+              >
+                <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Quero acessar a plataforma
+              </a>
+            </div>
+          </div>
+        </section>
+        )}
+        {((ACTIVE_VARIANT === 'variantA') || ACTIVE_VARIANT === 'variantC') && (
         <section id="construcao" className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-sky-50">
           <div className="relative mx-auto max-w-4xl px-6 py-20 md:py-28">
             <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-10">
@@ -2531,12 +2965,12 @@ const LandingPage = () => {
                 href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold w-full max-w-md mx-auto px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]`}
+                className="rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 font-semibold w-full max-w-md mx-auto px-8 py-4 text-lg min-h-[56px] active:scale-[0.98]"
               >
                 <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
-                {ACTIVE_VARIANT === 'variantA' ? 'Sim, Eu Quero Receber Oportunidade' : 'Entrar no grupo de WhatsApp'}
+                Quero acessar a plataforma
               </a>
             </div>
           </div>
@@ -2544,7 +2978,7 @@ const LandingPage = () => {
         )}
 
         {/* FAQ */}
-        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && (
+        {ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' && (
         <section id="faq" className="bg-white">
           <div className="mx-auto max-w-4xl px-6 py-20">
             <div className="space-y-4 text-center">
