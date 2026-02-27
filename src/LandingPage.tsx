@@ -1104,6 +1104,20 @@ const ScrollHint = ({ className = '' }: { className?: string }) => (
   </button>
 );
 
+/** Variant D – Indicador de scroll minimalista (apenas seta, sem texto) */
+const ScrollHintMinimal = ({ className = '' }: { className?: string }) => (
+  <button
+    type="button"
+    onClick={scrollNextViewport}
+    className={`flex items-center justify-center w-10 h-10 rounded-full text-slate-400 hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 transition-colors ${className}`}
+    aria-label="Ver mais conteúdo abaixo"
+  >
+    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </button>
+);
+
 const LandingPage = () => {
   const [veloImageError, setVeloImageError] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -1252,7 +1266,84 @@ const LandingPage = () => {
       )}
 
       <main>
-        {/* Hero */}
+        {/* Hero – Variant D: refatorada (hierarquia, conversão, grid). Outras variantes: hero original. */}
+        {ACTIVE_VARIANT === 'variantD' ? (
+        <section id="hero" className="relative overflow-hidden bg-gradient-to-b from-slate-100/70 via-white to-sky-50/40">
+          {/* Fundo: gradiente suave + grain + vinheta sutil (SaaS premium, não layout padrão) */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] max-w-[70vw] rounded-full bg-sky-100/20 blur-3xl" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[280px] h-[280px] rounded-full bg-slate-100/25 blur-3xl" />
+            {/* Grain sutil */}
+            <div
+              className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                backgroundRepeat: 'repeat',
+              }}
+            />
+            {/* Vinheta leve nas bordas */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(15,23,42,0.03) 100%)',
+              }}
+            />
+            {/* Profundidade: gradiente radial suave atrás da área do mockup + sombra ambiental */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 90% 50% at 50% 75%, rgba(148,163,184,0.06) 0%, transparent 55%)',
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 pt-8 sm:pt-9 lg:pt-12 pb-10 sm:pb-12 lg:pb-16">
+            <div className="flex flex-col items-center text-center">
+              {/* Headline: trio equilibrado – linha 1 um pouco menor no desktop; "patina…" com mais peso */}
+              <div className="w-full max-w-3xl space-y-4 sm:space-y-5">
+                <h1 className="text-slate-700 drop-shadow-sm tracking-tight leading-tight md:leading-[1.12]">
+                  <span className="block text-3xl font-normal sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">Sua assessoria de corrida</span>
+                  <span className="block font-bold bg-gradient-to-r from-sky-700 to-sky-800 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-6xl">patina…</span>
+                  <span className="block font-semibold text-amber-600 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Não escala?</span>
+                </h1>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+                  {copy.hero.subtitle}
+                </p>
+              </div>
+
+              {/* CTA: forte mas não dominante – largura contida (ação elegante, não bloco), centralizado */}
+              <div className="mt-5 sm:mt-6 flex justify-center">
+                <a
+                  href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-5 text-[15px] shadow-md shadow-slate-300/25 hover:shadow-slate-300/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 active:scale-[0.99] w-full max-w-[300px] sm:max-w-[320px]"
+                >
+                  <svg className="w-4 h-4 flex-shrink-0 opacity-85" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                  <span>{copy.hero.ctaPrimary}</span>
+                </a>
+              </div>
+
+              {/* Mockup: ainda mais próximo do CTA no desktop (fluxo contínuo, ~20–30px a menos) */}
+              <div className="mt-3 sm:mt-4 lg:mt-2 w-full max-w-2xl mx-auto">
+                <div
+                  className="relative rounded-2xl border border-slate-200/90 bg-white shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.04)] lg:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.04)] pt-2 sm:pt-3 px-3 sm:px-4 md:px-5 pb-3 sm:pb-4 md:pb-5 overflow-hidden"
+                  style={{ transform: 'perspective(1200px) rotateX(1.5deg)' }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/40 to-transparent pointer-events-none" aria-hidden />
+                  <img
+                    src="/Computer.svg"
+                    alt="Dashboard da plataforma Grit Run no computador"
+                    className="relative w-full h-auto max-h-[220px] sm:max-h-[260px] md:max-h-[300px] object-contain object-center object-top"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        ) : (
         <section
           id="hero"
           className={`relative overflow-hidden ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'bg-gradient-to-br from-sky-50 via-white to-sky-50' : (ACTIVE_VARIANT === 'variantC') ? 'bg-gradient-to-br from-sky-50 via-white to-green-50' : 'bg-gradient-to-b from-sky-50 via-white to-white'}`}
@@ -1316,16 +1407,18 @@ const LandingPage = () => {
             )}
           </div>
           
-          <div className={`mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:items-center lg:py-28 relative z-10 ${ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' ? 'lg:grid-cols-2' : ''}`}>
-            <div className={(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto space-y-10 md:space-y-12' : 'space-y-8'}>
+          <div className={`mx-auto grid max-w-6xl gap-12 sm:gap-16 px-4 sm:px-6 py-16 sm:py-20 lg:items-center lg:py-28 relative z-10 ${ACTIVE_VARIANT !== 'variantA' && ACTIVE_VARIANT !== 'variantC' && ACTIVE_VARIANT !== 'variantD' ? 'lg:grid-cols-2' : ''}`}>
+            <div className={(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto space-y-8 sm:space-y-10 md:space-y-12' : 'space-y-8'}>
+              {(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantC') && (
               <div className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wide ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'rounded-xl bg-gradient-to-r from-sky-100 to-sky-200 text-sky-700 border border-sky-200/50 shadow-sm' : (ACTIVE_VARIANT === 'variantC') ? 'rounded-full bg-gradient-to-r from-sky-100 to-green-100 text-sky-700 border border-sky-200/50 shadow-sm' : 'rounded-full bg-sky-100 text-sky-700'} ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'justify-center' : ''}`}>
                 {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') && (
                   <span className="text-base">🚀</span>
                 )}
                 {copy.hero.badge}
               </div>
+              )}
               <div className={`space-y-6 ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'w-full' : ''}`}>
-                <h1 className={`leading-tight ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'text-4xl font-normal md:text-5xl lg:text-6xl text-slate-700 drop-shadow-sm md:leading-[1.12] tracking-tight' : (ACTIVE_VARIANT === 'variantC') ? 'text-4xl font-semibold md:text-5xl bg-gradient-to-r from-slate-900 via-sky-800 to-slate-900 bg-clip-text text-transparent' : 'text-4xl font-semibold md:text-5xl text-slate-900'}`}>
+                <h1 className={`leading-tight ${(ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') ? 'text-3xl font-normal sm:text-4xl md:text-5xl lg:text-6xl text-slate-700 drop-shadow-sm md:leading-[1.12] tracking-tight' : (ACTIVE_VARIANT === 'variantC') ? 'text-4xl font-semibold md:text-5xl bg-gradient-to-r from-slate-900 via-sky-800 to-slate-900 bg-clip-text text-transparent' : 'text-4xl font-semibold md:text-5xl text-slate-900'}`}>
                   {ACTIVE_VARIANT === 'variantD' ? (
                     <>
                       Sua assessoria de corrida{' '}
@@ -1348,7 +1441,7 @@ const LandingPage = () => {
                   )}
                 </h1>
                 {ACTIVE_VARIANT === 'variantD' && (
-                  <p className="text-base font-medium text-slate-700 md:text-lg leading-relaxed drop-shadow-sm">
+                  <p className="text-base font-medium text-slate-700 md:text-lg leading-relaxed drop-shadow-sm max-w-3xl mx-auto px-1">
                     {copy.hero.subtitle}
                   </p>
                 )}
@@ -1431,11 +1524,11 @@ const LandingPage = () => {
                 </div>
               )}
               {ACTIVE_VARIANT === 'variantD' && (
-                <div className="mt-12 w-full max-w-2xl mx-auto flex justify-center">
+                <div className="mt-10 sm:mt-12 w-full max-w-2xl mx-auto flex justify-center px-2 sm:px-0">
                   <img
                     src="/Computer.svg"
                     alt="Plataforma no computador para assessores de corrida"
-                    className="w-full max-h-[320px] sm:max-h-[380px] md:max-h-[420px] object-contain object-center drop-shadow-2xl"
+                    className="w-full max-h-[280px] sm:max-h-[380px] md:max-h-[420px] object-contain object-center drop-shadow-2xl"
                   />
                 </div>
               )}
@@ -1635,141 +1728,114 @@ const LandingPage = () => {
             )}
           </div>
 
-          {/* Variant D – Indicador de scroll (mobile: incentiva rolar e ver mais seções) */}
-          {ACTIVE_VARIANT === 'variantD' && (
+          {/* Variant D – Indicador de scroll (mobile: incentiva rolar e ver mais seções) – apenas para A/C quando no hero original */}
+          {ACTIVE_VARIANT === 'variantC' && (
             <div className="flex justify-center pt-6 pb-2 md:pt-8 md:pb-4">
               <ScrollHint className="opacity-90" />
             </div>
           )}
         </section>
+        )}
 
-        {/* Variant D – Zona de identificação (acima dos depoimentos, paleta sky/amber) */}
+        {/* Variant D – Zona de identificação – ritmo médio, fundo branco puro (contraste com hero) */}
         {ACTIVE_VARIANT === 'variantD' && (
-          <section id="identificacao" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
-              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
-              <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
-            </div>
-            <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+          <section id="identificacao" className="relative overflow-hidden bg-white">
+            <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-14 sm:pb-16 md:pb-20 lg:pb-24">
               <div className="text-center">
-                <h2 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
                   {copy.painSection.title}
                 </h2>
                 {copy.painSection.subtitle ? (
-                  <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
+                  <p className="mx-auto mt-4 sm:mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg md:text-xl px-1">
                     {copy.painSection.subtitle}
                   </p>
                 ) : null}
               </div>
-              <div className="mt-20">
+              <div className="mt-10 sm:mt-12 md:mt-16">
                 <div className="mx-auto max-w-5xl">
-                  <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
+                  <div className="grid gap-3 sm:gap-4 md:grid-cols-1 lg:gap-5">
                     {copy.painSection.statements.map((item) => (
                       <div
                         key={item.text}
-                        className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
+                        className="group relative flex items-start gap-4 rounded-xl border border-slate-200/80 bg-slate-50/50 p-4 shadow-sm transition-colors duration-200 hover:border-slate-300 hover:bg-slate-50 sm:p-5 md:p-6"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <div className="relative flex items-start gap-6">
-                          <div className="flex shrink-0 items-center justify-center">
-                            <div className="relative">
-                              <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
-                              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
-                                <span className="text-2xl">{item.emoji}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex-1 pt-1">
-                            <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
-                              {item.text}
-                            </p>
-                          </div>
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
+                          <span className="text-lg sm:text-xl" aria-hidden>{item.emoji}</span>
+                        </div>
+                        <div className="flex-1 pt-0.5 min-w-0">
+                          <p className="text-sm leading-relaxed text-slate-700 sm:text-base md:text-lg group-hover:text-slate-900">
+                            {item.text}
+                          </p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="mt-16">
+              <div className="mt-10 sm:mt-12">
                 <div className="mx-auto max-w-4xl">
-                  <div className="rounded-3xl border-2 border-sky-200/70 bg-gradient-to-br from-sky-50 via-white to-amber-50/20 p-10 text-center shadow-xl shadow-sky-200/20 backdrop-blur-sm">
-                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/30">
-                      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <div className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-5 text-center shadow-sm sm:p-6 md:p-8">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-600 sm:mb-4 sm:h-14 sm:w-14">
+                      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     {copy.painSection.conclusion ? (
-                      <p className="text-xl font-semibold leading-relaxed text-slate-900 md:text-2xl">
+                      <p className="text-lg font-semibold leading-relaxed text-slate-900 sm:text-xl md:text-2xl">
                         {copy.painSection.conclusion}
                       </p>
                     ) : null}
-                    <p className="mt-4 text-2xl font-bold leading-relaxed text-sky-700 md:text-3xl">
+                    <p className="mt-3 sm:mt-4 text-xl font-bold leading-relaxed text-sky-700 sm:text-2xl md:text-3xl">
                       {copy.painSection.conclusionBold}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center pt-8 pb-4">
-                <ScrollHint className="opacity-90" />
-              </div>
             </div>
           </section>
         )}
 
-        {/* Variant D – O que oferecemos (proporcional às demais seções) */}
+        {/* Variant D – Uma plataforma pensada…: premium, compacta, linha divisória visível, hierarquia refinada */}
         {ACTIVE_VARIANT === 'variantD' && (
-          <section id="plataforma-para-quem-quer" className="relative overflow-hidden bg-gradient-to-b from-amber-50/40 via-white to-sky-50/60">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-amber-50/50 blur-3xl" />
-              <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
-              <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
-            </div>
-            <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+          <section id="plataforma-para-quem-quer" className="relative overflow-hidden bg-slate-50/60">
+            <div className="relative mx-auto max-w-3xl px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
               <div className="text-center">
-                <h2 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                <h2 className="text-lg font-bold leading-tight tracking-tight text-slate-900 sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                   Uma plataforma pensada exclusivamente para assessores que querem:
                 </h2>
               </div>
-              <div className="mt-20">
-                <div className="mx-auto max-w-5xl">
-                  <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
-                    {[
-                      'Organizar alunos em um só lugar',
-                      'Profissionalizar a entrega',
-                      'Aumentar retenção',
-                      'Estruturar mensalidades recorrentes',
-                      'Crescer com mais previsibilidade',
-                    ].map((text) => (
-                      <div
-                        key={text}
-                        className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <div className="relative flex items-start gap-6">
-                          <div className="flex shrink-0 items-center justify-center">
-                            <div className="relative">
-                              <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
-                              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
-                                <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex-1 pt-1">
-                            <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
-                              {text}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+              <div className="mt-8 sm:mt-10 md:mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:gap-x-8 lg:gap-x-10 md:items-stretch">
+                  <ul className="space-y-4 sm:space-y-5">
+                    {['Organizar alunos em um só lugar', 'Profissionalizar a entrega', 'Aumentar retenção'].map((text) => (
+                      <li key={text} className="flex items-center gap-3 sm:gap-4">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center text-sky-600" aria-hidden>
+                          <svg className="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                        <span className="text-slate-800 text-base sm:text-lg md:text-xl leading-relaxed font-medium">
+                          {text}
+                        </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+                  <div className="hidden md:block w-px bg-slate-300/90 self-stretch min-h-[120px]" aria-hidden />
+                  <ul className="space-y-4 sm:space-y-5 mt-5 md:mt-0">
+                    {['Estruturar mensalidades recorrentes', 'Crescer com mais previsibilidade'].map((text) => (
+                      <li key={text} className="flex items-center gap-3 sm:gap-4">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center text-sky-600" aria-hidden>
+                          <svg className="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                        <span className="text-slate-800 text-base sm:text-lg md:text-xl leading-relaxed font-medium">
+                          {text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <div className="flex justify-center pt-8 pb-4">
-                <ScrollHint className="opacity-90" />
               </div>
             </div>
           </section>
@@ -2496,71 +2562,53 @@ const LandingPage = () => {
         </section>
         )}
 
-        {/* Cópia Acesso Antecipado – acima de Quem somos (proporcional às demais seções) */}
+        {/* Cópia Acesso Antecipado – variant D: seção exclusiva, compacta, fundo levemente quente */}
         {ACTIVE_VARIANT === 'variantD' && (
-        <section id="acesso-antecipado-top" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
-            <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
-            <div className="absolute right-1/2 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-28">
+        <section id="acesso-antecipado-top" className="relative overflow-hidden bg-amber-50/40">
+          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-14 lg:py-16">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-100/90 px-4 py-2 backdrop-blur-sm border border-sky-200/60">
-                <span className="text-base">🚀</span>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-amber-100/90 px-3 py-1.5 sm:px-4 sm:py-2">
+                <span className="text-sm" aria-hidden>🚀</span>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-amber-800">
                   Acesso Antecipado
                 </p>
               </div>
-              <h2 className="mt-6 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+              <h2 className="mt-3 sm:mt-4 text-2xl font-bold leading-tight text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl px-1">
                 Os primeiros assessores terão:
               </h2>
             </div>
-            <div className="mt-20">
-              <div className="mx-auto max-w-5xl">
-                <div className="grid gap-6 md:grid-cols-1 lg:gap-8">
-                  {[
-                    { emoji: '🚀', text: 'Condição especial de lançamento' },
-                    { emoji: '📈', text: 'Participação na evolução da plataforma' },
-                    { emoji: '👑', text: 'Benefícios exclusivos para embaixadores' },
-                  ].map((item) => (
-                    <div
-                      key={item.text}
-                      className="group relative overflow-hidden rounded-3xl border border-sky-200/70 bg-white/90 p-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-200/30"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-sky-50/0 to-sky-50/0 transition-all duration-300 group-hover:from-sky-50/40 group-hover:to-transparent" />
-                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <div className="relative flex items-start gap-6">
-                        <div className="flex shrink-0 items-center justify-center">
-                          <div className="relative">
-                            <div className="absolute inset-0 rounded-2xl bg-sky-100 blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
-                            <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 shadow-lg shadow-sky-500/25 transition-transform duration-300 group-hover:scale-110">
-                              <span className="text-2xl">{item.emoji}</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex-1 pt-1">
-                          <p className="text-base leading-relaxed text-slate-700 md:text-lg group-hover:text-slate-900">
-                            {item.text}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+            <div className="mt-8 sm:mt-10">
+              <div className="mx-auto max-w-2xl space-y-3 sm:space-y-4">
+                {[
+                  { emoji: '🚀', text: 'Condição especial de lançamento' },
+                  { emoji: '📈', text: 'Participação na evolução da plataforma' },
+                  { emoji: '👑', text: 'Benefícios exclusivos para embaixadores' },
+                ].map((item) => (
+                  <div
+                    key={item.text}
+                    className="flex items-center gap-3 rounded-lg border border-amber-200/60 bg-white/90 px-4 py-3 shadow-sm sm:gap-4 sm:px-5 sm:py-3.5"
+                  >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 text-lg sm:h-10 sm:w-10 sm:text-xl" aria-hidden>
+                      {item.emoji}
+                    </span>
+                    <p className="text-sm leading-relaxed text-slate-700 sm:text-base md:text-lg">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-            <p className="mt-12 text-center text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-6 sm:mt-8 text-center text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto px-2">
               Estamos formando um grupo fechado para apresentar os detalhes.
             </p>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-6 sm:mt-8 flex justify-center">
               <a
                 href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-4 text-lg min-h-[56px] active:scale-[0.98] w-full max-w-md"
+                className="rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 text-[15px] shadow-md shadow-slate-300/20 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2 active:scale-[0.99] w-full max-w-sm"
               >
-                <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 Quero acessar a plataforma
@@ -2570,59 +2618,56 @@ const LandingPage = () => {
         </section>
         )}
 
-        {/* Quem somos - Grid - apenas variantC */}
+        {/* Quem somos – variant D: estilo mais editorial, menos card; demais variantes: layout original */}
         {((ACTIVE_VARIANT === 'variantA' || ACTIVE_VARIANT === 'variantD') || ACTIVE_VARIANT === 'variantC') && (
-        <section id="quem-somos" className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
-          <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
+        <section id="quem-somos" className={`relative overflow-hidden ${ACTIVE_VARIANT === 'variantD' ? 'bg-slate-50/60' : 'bg-gradient-to-b from-white via-slate-50 to-white'}`}>
+          <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${ACTIVE_VARIANT === 'variantD' ? 'py-20 sm:py-24 lg:py-28' : 'py-16 sm:py-20 md:py-24 lg:py-28'}`}>
             {/* Header */}
-            <div className="mb-16">
-              <div className="text-center mb-12">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 mb-4">
+            <div className={ACTIVE_VARIANT === 'variantD' ? 'mb-14 sm:mb-16' : 'mb-12 sm:mb-16'}>
+              <div className="text-center mb-8 sm:mb-12">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 mb-3 sm:mb-4">
                   Quem somos
                 </p>
-                <h2 className="text-3xl font-bold text-slate-900 md:text-4xl lg:text-5xl leading-tight mb-6">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 sm:mb-6 px-2">
                   Sobre os criadores da plataforma
                 </h2>
                 <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-sky-500 to-green-500" />
               </div>
 
-              {/* Texto introdutório com layout destacado */}
+              {/* Texto introdutório – variant D: mais editorial (sombras leves, mais ar) */}
               <div className="mx-auto max-w-5xl">
-                <div className="space-y-6 md:space-y-8">
+                <div className={ACTIVE_VARIANT === 'variantD' ? 'space-y-6 sm:space-y-8 md:space-y-10' : 'space-y-4 sm:space-y-6 md:space-y-8'}>
                   {/* Frase 1 */}
-                  <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-sky-50/30 p-6 md:p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:border-sky-300">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-sky-200/20 to-green-200/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                    <div className="relative flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-sky-500 to-green-500 flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-lg">
+                  <div className={`group relative overflow-hidden border border-slate-200 bg-white p-4 transition-colors duration-200 hover:border-slate-300 ${ACTIVE_VARIANT === 'variantD' ? 'rounded-lg shadow-sm sm:p-6 md:p-8' : 'rounded-xl sm:rounded-2xl bg-gradient-to-br from-white to-sky-50/30 shadow-md transition-all duration-300 hover:shadow-xl hover:border-sky-300 sm:p-6 md:p-8'}`}>
+                    <div className={`relative flex items-start gap-3 sm:gap-4 ${ACTIVE_VARIANT === 'variantD' ? '' : ''}`}>
+                      <div className={`flex-shrink-0 flex items-center justify-center text-white font-bold ${ACTIVE_VARIANT === 'variantD' ? 'w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-sky-600 text-lg sm:text-xl' : 'w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-sky-500 to-green-500 text-lg sm:text-xl md:text-2xl shadow-lg'}`}>
                         1
                       </div>
-                      <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
+                      <p className="text-base sm:text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-0.5 sm:pt-1 min-w-0">
                         Somos desenvolvedores que cansaram de ver o mercado de corrida mal atendido pelos sistemas e aplicativos atuais.
                       </p>
                     </div>
                   </div>
 
                   {/* Frase 2 */}
-                  <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-green-50/30 p-6 md:p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:border-green-300">
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-green-200/20 to-sky-200/10 rounded-full blur-2xl -translate-y-1/2 -translate-x-1/2" />
-                    <div className="relative flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-green-500 to-sky-500 flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-lg">
+                  <div className={`group relative overflow-hidden border border-slate-200 bg-white p-4 transition-colors duration-200 hover:border-slate-300 ${ACTIVE_VARIANT === 'variantD' ? 'rounded-lg shadow-sm sm:p-6 md:p-8' : 'rounded-xl sm:rounded-2xl bg-gradient-to-br from-white to-green-50/30 shadow-md transition-all duration-300 hover:shadow-xl hover:border-green-300 sm:p-6 md:p-8'}`}>
+                    <div className="relative flex items-start gap-3 sm:gap-4">
+                      <div className={`flex-shrink-0 flex items-center justify-center text-white font-bold ${ACTIVE_VARIANT === 'variantD' ? 'w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-sky-600 text-lg sm:text-xl' : 'w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-sky-500 text-lg sm:text-xl md:text-2xl shadow-lg'}`}>
                         2
                       </div>
-                      <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
+                      <p className="text-base sm:text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-0.5 sm:pt-1 min-w-0">
                         Enquanto o setor evoluiu, as soluções ficaram para trás — então decidimos criar algo melhor.
                       </p>
                     </div>
                   </div>
 
                   {/* Frase 3 */}
-                  <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-sky-50/20 to-green-50/20 p-6 md:p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:border-sky-300">
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br from-sky-200/20 to-green-200/10 rounded-full blur-2xl translate-y-1/2 translate-x-1/2" />
-                    <div className="relative flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-sky-600 to-green-600 flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-lg">
+                  <div className={`group relative overflow-hidden border border-slate-200 bg-white p-4 transition-colors duration-200 hover:border-slate-300 ${ACTIVE_VARIANT === 'variantD' ? 'rounded-lg shadow-sm sm:p-6 md:p-8' : 'rounded-xl sm:rounded-2xl bg-gradient-to-br from-white via-sky-50/20 to-green-50/20 shadow-md transition-all duration-300 hover:shadow-xl hover:border-sky-300 sm:p-6 md:p-8'}`}>
+                    <div className="relative flex items-start gap-3 sm:gap-4">
+                      <div className={`flex-shrink-0 flex items-center justify-center text-white font-bold ${ACTIVE_VARIANT === 'variantD' ? 'w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-sky-600 text-lg sm:text-xl' : 'w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-sky-600 to-green-600 text-lg sm:text-xl md:text-2xl shadow-lg'}`}>
                         3
                       </div>
-                      <p className="text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-1">
+                      <p className="text-base sm:text-lg md:text-xl text-slate-900 leading-relaxed font-medium pt-0.5 sm:pt-1 min-w-0">
                         Somos corredores que decidiram criar uma plataforma para treinadores que querem crescer com escala.
                       </p>
                     </div>
@@ -2631,13 +2676,13 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {/* Grid 2x3 */}
-            <div className="mt-16">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {/* Grid – variant D: imagens um pouco menores (aspect 3/2), mais ar */}
+            <div className={ACTIVE_VARIANT === 'variantD' ? 'mt-14 sm:mt-16' : 'mt-12 sm:mt-16'}>
+              <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 ${ACTIVE_VARIANT === 'variantD' ? 'gap-4 sm:gap-5 md:gap-6' : ''}`}>
                 {quemSomosData.map((item, index) => (
                   <div
                     key={index}
-                    className="relative group aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2"
+                    className={`relative group overflow-hidden focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 ${ACTIVE_VARIANT === 'variantD' ? 'aspect-[3/2] rounded-lg bg-slate-200' : 'aspect-[4/3] rounded-2xl bg-slate-200'}`}
                     tabIndex={0}
                     role="button"
                     aria-label={`${item.title}. ${item.description}`}
@@ -2907,25 +2952,21 @@ const LandingPage = () => {
         </section>
         )}
 
-        {/* CTA final – variant D: apenas texto + botão */}
+        {/* CTA final – variant D: fundo branco puro, sombra leve no botão */}
         {ACTIVE_VARIANT === 'variantD' && (
-        <section id="construcao" className="relative overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-amber-50/40">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-sky-100/30 blur-3xl" />
-            <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-amber-50/40 blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-2xl px-6 py-20 md:py-24">
-            <div className="flex flex-col items-center text-center space-y-8">
-              <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+        <section id="construcao" className="relative overflow-hidden bg-white">
+          <div className="relative mx-auto max-w-2xl px-4 sm:px-6 py-14 sm:py-16 md:py-20">
+            <div className="flex flex-col items-center text-center space-y-6 sm:space-y-8">
+              <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed px-1">
                 Estamos formando um grupo fechado para apresentar os detalhes.
               </p>
               <a
                 href="https://chat.whatsapp.com/GIq22hKLqL6LfDiWqzUn64?mode=gi_t"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-green-600 text-white shadow-xl shadow-green-500/30 transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-4 text-lg min-h-[56px] active:scale-[0.98] w-full max-w-md"
+                className="rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3.5 text-[15px] shadow-md shadow-slate-300/20 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 inline-flex items-center justify-center gap-2.5 active:scale-[0.99] w-full max-w-sm"
               >
-                <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 Quero acessar a plataforma
