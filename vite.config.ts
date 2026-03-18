@@ -1,11 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// No GitHub Pages (projeto): site fica em https://usuario.github.io/Landing-Page-Says/
-const base = process.env.GITHUB_PAGES === 'true' ? '/Landing-Page-Says/' : '/';
-
+// Site na raiz do domínio (custom domain ou user site). Para projeto em usuario.github.io/Landing-Page-Says/ use base: '/Landing-Page-Says/' e GITHUB_PAGES=true no workflow.
 export default defineConfig({
-  base,
+  base: '/',
   plugins: [react()],
   server: {
     port: 5173,
