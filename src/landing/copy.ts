@@ -1,4 +1,4 @@
-export type VariantKey = 'variantA' | 'variantB' | 'variantC' | 'variantD';
+export type VariantKey = 'variantA' | 'variantB' | 'variantC' | 'variantD' | 'carrinho';
 
 // ============================================
 // TIPOS
@@ -1051,6 +1051,153 @@ export const copyVariants: Record<VariantKey, CopyData> = {
         { question: 'Como vou acessar a plataforma?', answer: 'O acesso é imediato. Assim que o pagamento for aprovado, você recebe um e-mail com as instruções para acessar o painel do treinador e começar a estruturar sua assessoria.' },
         { question: 'Existe período de teste ou garantia?', answer: 'Sim. Você tem 7 dias para testar o plano pago sem risco. Se dentro desse período entender que o Grit Run não faz sentido para sua operação, basta solicitar o reembolso e devolvemos 100% do valor, sem burocracia.' },
         { question: 'O Grit Run é indicado para assessorias maiores?', answer: 'Sim. A plataforma foi pensada justamente para resolver os gargalos de crescimento, organização e retenção que surgem quando a assessoria começa a escalar.' },
+      ],
+    },
+    footer: {
+      copyright: `Copyright © ${new Date().getFullYear()} Grit Softwares`,
+      allRightsReserved: 'Todos os Direitos Reservados',
+      companyName: 'Grit Soluções em Tecnologia LTDA',
+      cnpj: 'CNPJ: 55.952.316/0001-75',
+      address: 'Endereço: Rua Santa Luzia, 100, Sala 604, Trindade, Florianópolis/SC – Brasil',
+      supportTitle: 'Ficou com alguma dúvida?',
+      email: 'contato@gritsoftwares.com.br',
+      whatsapp: '+55 48 98817-7698',
+    },
+  },
+
+  carrinho: {
+    header: {
+      logo: 'Grit Run',
+      nav: {
+        benefits: 'Benefícios',
+        testimonials: 'Depoimentos',
+        howItWorks: 'Como funciona',
+        plans: 'Planos',
+        faq: 'FAQ',
+      },
+      cta: 'Ver planos',
+    },
+    hero: {
+      badge: 'Carrinho',
+      title: 'Seu carrinho',
+      subtitle: 'Revise seus itens e finalize sua compra.',
+      subtitleItalic: '',
+      ctaPrimary: 'Finalizar compra',
+      ctaSecondary: 'Continuar comprando',
+      stats: [],
+    },
+    dashboard: {
+      title: 'Seu plano da semana',
+      weekRange: 'Semana 17-23 Nov',
+      levelLabel: 'Seu nível',
+      weeklyProgressLabel: 'Progresso semanal',
+      kmThisWeekLabel: 'Km esta semana',
+      todayWorkoutLabel: 'Treino de hoje',
+      todayWorkoutType: 'Corrida contínua',
+      todayWorkoutDetails: '4 km • Intensidade leve',
+      todayWorkoutCta: 'Começar',
+      challengesLabel: 'Desafios da semana',
+      upcomingDaysLabel: 'Próximos dias',
+    },
+    painSection: {
+      title: 'Se hoje você:',
+      subtitle: '',
+      statements: [
+        { emoji: '📱', text: 'Envia treinos pelo WhatsApp' },
+        { emoji: '📋', text: 'Usa planilhas para organizar alunos' },
+        { emoji: '📈', text: 'Quer crescer mas sente falta de estrutura' },
+        { emoji: '👋', text: 'Perde alunos por falta de acompanhamento mais profissional' },
+      ],
+      conclusion: '',
+      conclusionBold: 'Nosso aplicativo foi criado para você.',
+    },
+    experienceSection: {
+      badge: '',
+      titleLine1: 'O problema nunca foi você…',
+      titleLine2: 'Na faculdade ninguém te ensinou como criar um modelo de carreira escalável e rentável.',
+      subtitle: '',
+      intro: 'Isso acontece porque:',
+      problems: [
+        'Você monta treinos manualmente para cada aluno e vira refém da própria agenda.',
+        'Você tenta aumentar o número de alunos, mas a operação não se sustenta ao passar das poucas dezenas.',
+        'Você usa planilhas, WhatsApp e ferramentas improvisadas que não foram feitas para escalar uma assessoria.',
+        'Você trabalha cada vez mais achando que vai ganhar mais, mas só se desgasta e perde o controle da operação.',
+      ],
+      conclusion: 'O que faltava era um caminho claro para te levar até lá.',
+      conclusionBold: 'E é exatamente isso que você vai ter agora…',
+      cta: 'Começar',
+    },
+    howItWorks: {
+      badge: 'Como funciona',
+      title: 'Como funciona o sistema Grit Run™',
+      subtitle: 'Em cinco passos, o Grit Run organiza sua operação.',
+      steps: [
+        { title: 'Você estrutura sua assessoria', description: 'Define metodologia, tipos de treino, perfis de alunos.' },
+        { title: 'O sistema organiza e acelera a criação dos treinos', description: 'Modelos reutilizáveis e estrutura clara.' },
+        { title: 'Menos mensagens soltas, mais clareza', description: 'Feedbacks organizados em um único lugar.' },
+        { title: 'Você acompanha a evolução da assessoria', description: 'Execução, constância e engajamento em um painel.' },
+        { title: 'Resultado', description: 'Assessoria organizada e pronta para crescer.' },
+      ],
+      swipeHint: 'Arraste para o lado para ver todas as etapas →',
+    },
+    benefits: {
+      badge: 'O que estamos construindo',
+      title: 'A forma moderna de gerir sua assessoria de corrida.',
+      subtitle: 'Você lidera a metodologia. O Grit Run organiza a operação.',
+      features: [
+        { title: 'Comunidade que aumenta a retenção', description: 'Desafios e rankings fortalecem o engajamento.' },
+        { title: 'Estrutura clara para criação de treinos', description: 'Crie treinos com base na sua metodologia.' },
+        { title: 'Menos retrabalho no dia a dia', description: 'Centralize planos e feedbacks.' },
+        { title: 'Organização que respeita sua rotina', description: 'Controle do cronograma de treinos.' },
+        { title: 'Visão completa da assessoria', description: 'Acompanhe execução e evolução em um painel.' },
+        { title: 'Negócio preparado para escalar', description: 'Operação organizada e pronta para crescer.' },
+      ],
+    },
+    resultsProof: {
+      badge: 'Resultados reais',
+      title: 'Se outros treinadores conseguiram, você também pode!',
+      intro: 'Dados reais mostram que assessorias que utilizam tecnologia conseguem escalar.',
+      dataTitle: 'Dados que provam isso:',
+      dataPoints: [
+        '70% dos personal trainers gastam mais de 5 horas por semana em tarefas administrativas.',
+        'A retenção de alunos aumenta em mais de 30% com comunidades e desafios.',
+        'A satisfação aumenta em assessorias que utilizam soluções digitais.',
+      ],
+      conclusion: 'Você pode ser o próximo!',
+    },
+    testimonials: {
+      badge: 'Depoimentos',
+      title: 'Corredores de todos os níveis já confiam na plataforma.',
+      subtitle: 'Veja o que quem usa o Grit Run tem a dizer.',
+      testimonials: [
+        { content: 'O aplicativo se tornou minha maior aliado na corrida.', author: 'Inácio Nogueira', role: 'Maratonista' },
+        { content: 'A plataforma é essencial para qualquer pessoa correr melhor.', author: 'Rafael Soccol', role: 'Corredor de Meia Maratona' },
+        { content: 'Comecei a correr há pouco tempo e já vi meu ritmo melhorar.', author: 'Elizeu Neto', role: 'Corredor Iniciante' },
+      ],
+    },
+    pricingAnchor: {
+      title: 'Treinar com uma assessoria de corrida pode custar R$ 150 a R$ 350 por mês.',
+      subtitle: 'Um treinador particular pode custar R$ 1.000 a R$ 3.000 por mês.',
+      intro: 'Mas você não precisa pagar esse valor para ter:',
+      benefits: ['Personalização', 'Ajustes automáticos', 'Acompanhamento inteligente', 'Metodologia profissional'],
+    },
+    plans: {
+      badge: 'Planos',
+      title: 'Escolha seu plano!',
+      subtitle: 'Todos incluem suporte e atualizações contínuas.',
+      plans: [
+        { name: 'MENSAL', description: 'Para treinadores que querem organizar a assessoria.', price: 'R$ 89,90 / mês', cta: 'Assinar Mensal', highlight: true, paymentLink: 'https://www.asaas.com/c/zts26bonzs3uwjef', features: ['Gestão de treinos e alunos', 'Criação de planos', 'Centralização de feedbacks', 'Visão geral da assessoria'] },
+        { name: 'ANUAL', description: '(cobrado uma vez por ano)', price: 'R$ 69,90 / mês', cta: 'Assinar Anual', paymentLink: 'https://www.asaas.com/c/mvlqe3ca71dbpwli', features: ['Todos os recursos do Mensal', 'Economia de R$ 240 por ano', 'Pagamento único'] },
+      ],
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Perguntas frequentes',
+      subtitle: 'Tire suas dúvidas sobre o Grit Run.',
+      faqs: [
+        { question: 'Preciso ter muita experiência para usar o Grit Run?', answer: 'Não. O Grit Run atende treinadores em diferentes estágios.' },
+        { question: 'O Grit Run substitui minha metodologia?', answer: 'Não. Ele organiza e dá escala à forma como você já trabalha.' },
+        { question: 'Como funciona o cancelamento?', answer: 'Você pode cancelar a qualquer momento, sem multa.' },
       ],
     },
     footer: {

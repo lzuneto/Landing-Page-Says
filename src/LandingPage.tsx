@@ -3,6 +3,7 @@ import LandingVariantA from './LandingVariantA';
 import LandingVariantB from './LandingVariantB';
 import LandingVariantC from './LandingVariantC';
 import LandingVariantD from './LandingVariantD';
+import LandingVariantCarrinho from './LandingVariantCarrinho';
 
 export type { VariantKey } from './landing/copy';
 
@@ -11,6 +12,7 @@ const VARIANT_COMPONENTS = {
   variantB: LandingVariantB,
   variantC: LandingVariantC,
   variantD: LandingVariantD,
+  carrinho: LandingVariantCarrinho,
 } as const;
 
 /**

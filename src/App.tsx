@@ -4,6 +4,7 @@ import LandingVariantA from './LandingVariantA';
 import LandingVariantB from './LandingVariantB';
 import LandingVariantC from './LandingVariantC';
 import LandingVariantD from './LandingVariantD';
+import LandingVariantCarrinho from './LandingVariantCarrinho';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path={VARIANT_PATHS.variantB} element={<LandingVariantB />} />
         <Route path={VARIANT_PATHS.variantC} element={<LandingVariantC />} />
         <Route path={VARIANT_PATHS.variantD} element={<LandingVariantD />} />
+        <Route path={VARIANT_PATHS.carrinho} element={<LandingVariantCarrinho />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

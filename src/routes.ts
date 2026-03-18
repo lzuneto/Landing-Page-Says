@@ -2,13 +2,14 @@
  * Configuração das rotas por variante.
  * Para trocar o nome da URL (ex.: para o MKT), altere apenas os paths abaixo.
  */
-export type VariantKey = 'variantA' | 'variantB' | 'variantC' | 'variantD';
+export type VariantKey = 'variantA' | 'variantB' | 'variantC' | 'variantD' | 'carrinho';
 
 export const VARIANT_PATHS: Record<VariantKey, string> = {
   variantA: '/varianteA',
   variantB: '/varianteB',
   variantC: '/varianteC',
   variantD: '/varianteD',
+  carrinho: '/carrinho',
 };
 
 /** Path da variante principal (usado no redirect de "/") */
