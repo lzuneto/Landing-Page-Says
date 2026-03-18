@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "build:gh-pages": "vite build && node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
+    "dev": "vite",
+    "build": "vite build && node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
+    "build:gh-pages": "npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
