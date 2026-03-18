@@ -7,8 +7,9 @@ import LandingVariantD from './LandingVariantD';
 import LandingVariantCarrinho from './LandingVariantCarrinho';
 
 const App = () => {
+  const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || '/';
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<LandingVariantD />} />
         <Route path={VARIANT_PATHS.variantA} element={<LandingVariantA />} />
