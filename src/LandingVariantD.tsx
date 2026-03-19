@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { copyVariants } from './landing/copy';
 import { scrollToSection, quemSomosData } from './landing/landingUtils.tsx';
 
+// Landing Variant D – título com "1" (atualizado)
 export default function LandingVariantD() {
   const copy = copyVariants.variantD;
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -44,7 +45,7 @@ export default function LandingVariantD() {
             <div className="flex flex-col items-center text-center">
               <div className="w-full max-w-3xl space-y-3 sm:space-y-4">
                 <h1 className="text-slate-700 drop-shadow-sm tracking-tight leading-tight md:leading-[1.12]">
-                  <span className="block text-2xl font-normal sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl">Sua assessoria de corrida</span>
+                  <span className="block text-2xl font-normal sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl"><strong className="text-amber-600">1</strong> Sua assessoria de corrida</span>
                   <span className="block font-bold bg-gradient-to-r from-sky-700 to-sky-800 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl">patina…</span>
                   <span className="block font-semibold text-amber-600 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Não escala?</span>
                 </h1>

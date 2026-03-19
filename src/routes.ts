@@ -14,3 +14,6 @@ export const VARIANT_PATHS: Record<VariantKey, string> = {
 
 /** Path da variante principal (usado no redirect de "/") */
 export const DEFAULT_VARIANT_PATH = VARIANT_PATHS.variantD;
+
+/** Página "Meu carrinho" (criada à parte) */
+export const MEU_CARRINHO_PATH = '/meu-carrinho';

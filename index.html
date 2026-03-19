@@ -2,6 +2,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grit Run - Plataforma de treinos inteligentes</title>
     <!-- Meta Pixel Code -->
@@ -19,13 +20,15 @@
     </script>
     <!-- End Meta Pixel Code -->
   </head>
-  <body class="bg-slate-950">
+  <body class="min-h-screen bg-slate-100 text-slate-900">
     <!-- Meta Pixel (noscript - fallback sem JavaScript) -->
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=777896238692286&ev=PageView&noscript=1"
     /></noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root" class="min-h-screen" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f1f5f9; color: #334155; font-family: system-ui, sans-serif;">
+      <p style="font-size: 1.125rem;">Carregando…</p>
+    </div>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>
 
