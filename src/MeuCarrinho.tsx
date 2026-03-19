@@ -124,7 +124,7 @@ function CronometroAteSexta() {
 
   return (
     <div className="mt-6 inline-flex flex-col items-center gap-2">
-      <p className="text-sm font-medium text-slate-600">Oferta válida até o final do dia de sexta-feira</p>
+      <p className="text-sm font-medium text-slate-600">Oferta válida até o final do dia de quinta-feira</p>
       <div className="flex items-center gap-2 sm:gap-3 font-mono text-xl sm:text-2xl font-bold text-sky-600">
         {restante.d > 0 && (
           <>
